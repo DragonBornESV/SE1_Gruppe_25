@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Parametre {
     private float score;
     private static ArrayList<Parametre> list = new ArrayList<>();
-    
+    private float attempts = 10;
     public Parametre() {
     this.score = 0;
     list.add(this);
@@ -40,16 +40,15 @@ public class Parametre {
     public void progressBar(){
         
     }
-    public void getAverage(){
-        
+    public float getAverage(){
+        return this.score/this.attempts;
     }
     public static void getMainScore(){ //viser progressbar for Main Score/Parameter (metoden ikke færdig endnu)
         float value = 0;
         
         for (Parametre score : list){
-            value += score.getScore();
+            value += score.getAverage();
         }
-        
         System.out.println(value/list.size());
     }
 }

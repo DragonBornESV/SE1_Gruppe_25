@@ -4,9 +4,9 @@ public class Inventory {
     
     public int pickUpItem = 3;
     
-    public int computer = 0;
-    public int Axe = 0;
-    public int hammer = 0;
+    public int computer = 3;
+    public int axe = 1;
+    public int hammer = 1;
     
     public int iron = 5;
     public int plastic = 5;
@@ -21,6 +21,7 @@ public class Inventory {
     
     public Inventory(){
         updateInventory();
+        printInventory();
     }
     
     public void updateInventory() {
@@ -31,6 +32,27 @@ public class Inventory {
         } else {
             System.out.println("do nothing");
         }
+    }
+        
+    public void printInventory() {
+        System.out.println("┌-------------┬-----------┐");
+        System.out.println("│ ITEM        │  COUNT    │");
+        
+        if (computer > 0){
+            System.out.println("├-------------┼-----------┤");
+            System.out.println("│  Computer   │  " + computer + "  │");
+        }
+        if (axe > 0){
+            System.out.println("├-------------┼-----------┤");
+            System.out.println("│  Axe        │  " + axe + "  │");
+        }
+        if (hammer > 0) {
+            System.out.println("├-------------┼-----------┤");
+            System.out.println("│  Hammer     │  " + hammer + "  │");
+        }
+        
+        System.out.println("└-------------┴-----------┘");
+        
     }
     
 }

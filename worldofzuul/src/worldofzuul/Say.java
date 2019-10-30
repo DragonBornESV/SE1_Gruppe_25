@@ -1,6 +1,5 @@
 package worldofzuul;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**This class contains dialog elements used by the NPC class. 

@@ -39,12 +39,20 @@ public class NPC {
         
         //Checks if the player succeeded. If not a fail message is printed.
         if (persuasionValue < persuasionTrigger) {
+            System.out.println("");
             System.out.println("You failed to convince the person...");
+            System.out.println("The person walked away");
+            System.out.println("");
             return;
         }
         
+        //The succes message is printes out!
         //INDSÆT KODE TIL AT INKREMENTERE PARAMETERVÆRDIEN!
+        System.out.println("");
+        System.out.println("---------------------------------");
+        System.out.println("");
         System.out.println(endTriggerMessage);
+        System.out.println("");
         
     }
     

@@ -8,16 +8,40 @@ public class Game
 
     public Game() 
     {
-        createRooms();
         parser = new Parser();
+        createRooms();
     }
 
 
     private void createRooms()
     {
         Room outside, theatre, pub, lab, office;
-      
-        outside = new Room("outside the main entrance of the university");
+        
+        //Setting up the NPC for the outside room
+        String[] responses1 = new String[]{
+                "Det er lort!", 
+                
+                "Det er godt"};
+        
+        int[] responsePoints1 = new int[]{30,30};
+        Say dialog1 = new Say("Hvad er bæredygtighed?", responses1, responsePoints1, parser);
+        
+        String[] responses2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        
+        int[] responsePoints2 = new int[]{30,0};
+        Say dialog2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", responses2, responsePoints2, parser);
+        
+        //We take all the dialog and use when calling the constructor of the 
+        //NPC class. 
+        NPC npc = new NPC(new Say[]{dialog1,dialog2},"Arh, ved du hvad? Jeg tror jeg"
+                + " prøver det der!");
+        
+        outside = new Room("outside the main entrance of the university", npc);
         theatre = new Room("in a lecture theatre");
         pub = new Room("in the campus pub");
         lab = new Room("in a computing lab");
@@ -78,6 +102,18 @@ public class Game
         }
         else if (commandWord == CommandWord.GO) {
             goRoom(command);
+        }
+        else if (commandWord == CommandWord.TALK) {
+            if (currentRoom.hasNPC()) {
+                currentRoom.getNPC().runDialog();
+            } else {
+                System.out.println("There is no one to talk to...");
+            }
+        }
+        else if (commandWord == CommandWord.SAY) {
+            System.out.println("You need to start a conversation with someone"
+                    + " before you can say anything.\n"
+                    + "If in doubt type 'help'");
         }
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);

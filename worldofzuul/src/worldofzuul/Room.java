@@ -9,10 +9,18 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;
+    
+    private NPC npc;
 
     public Room(String description) 
     {
         this.description = description;
+        exits = new HashMap<String, Room>();
+    }
+    
+    public Room(String description, NPC npc) {
+        this.description = description;
+        this.npc = npc;
         exits = new HashMap<String, Room>();
     }
 
@@ -44,6 +52,19 @@ public class Room
     public Room getExit(String direction) 
     {
         return exits.get(direction);
+    }
+    
+    public boolean hasNPC() {
+        return npc != null; //Returns true if an address is assigned
+    }
+    
+    /**
+     * A get method for the npc
+     * @return The address assigned to the npc attribute. If none is assigned
+     * null is returned.
+     */
+    public NPC getNPC() {
+        return npc;
     }
 }
 

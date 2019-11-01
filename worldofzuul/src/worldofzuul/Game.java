@@ -20,36 +20,34 @@ public class Game
                 school, supermarket, clothingStore, oldDecayingBuilding, park, 
                 hospital, recyclingStation;
         
-        office = new Room("Welcome to the Mayers Office!");
-        street1 = new Room("you are outside the main entrance of the Mayers Office. Infront of you are the library.");
-        street2 = new Room("you are outside the side entrance of the Mayers Office. Infront of you are the gas station.");
-        street3 = new Room("you are outside the back entrance of the Mayers Office. Infront of you are the supermarket.");
-        street4 = new Room("you are outside the side entrance of the Mayers Office. Infront of you are the park");
-        corner1 = new Room("you are standing by the bus station and the bank.");
-        corner2 = new Room("you are standing by the house and the school.");
-        corner3 = new Room("you are standing by the clothing store and the old decaying building.");
-        corner4 = new Room("you are standing by the bus station and the bank.");
-        library = new Room("in the library.");
-        busStation = new Room("at the bus station.");
-        bank = new Room("in the bank.");
-        gasStation = new Room("at the gas station.");
-        house = new Room("in the house.");
-        school = new Room("in school.");
-        supermarket = new Room("in the supermarket.");
-        clothingStore = new Room("in a clothing store.");
-        oldDecayingBuilding = new Room("in an old building.");
-        park = new Room("in the park.");
-        hospital = new Room("in the hospital.");
-        recyclingStation = new Room("on the recycling station.");
+        office = new Room("welcome to the Mayers Office! This building is the center of the city and where you start");
+        street1 = new Room("standing on North Street. Infront of you are the library and behind you are the Mayers office");
+        street2 = new Room("standing on East Street outside the eastside entrance of the Mayers office. To your right are the gas station");
+        street3 = new Room("standing on South Street outside the main entrance of the Mayers office. Infront you are the supermarket");
+        street4 = new Room("standing on West Street outside the westside entrance of the Mayers office. To your left are the park");
+        corner1 = new Room("standing on the northeast corner. Infront of you are the bus station and to your right are the bank");
+        corner2 = new Room("standing on the southeast corner. To your right are your house and behind you are the school");
+        corner3 = new Room("standing on the southwest corner. Behind you are the clothing store and to your left are the old decaying building");
+        corner4 = new Room("standing on the northwest corner. To your left are the hospital and infront of you are the recycling station");
+        library = new Room("in the library");
+        busStation = new Room("at the bus station");
+        bank = new Room("in the bank");
+        gasStation = new Room("at the gas station");
+        house = new Room("in your house");
+        school = new Room("in the school");
+        supermarket = new Room("in the supermarket");
+        clothingStore = new Room("in the clothing store");
+        oldDecayingBuilding = new Room("in an old decaying building");
+        park = new Room("in the park");
+        hospital = new Room("in the hospital");
+        recyclingStation = new Room("at the recycling station");
         
-        Office.setExit("north", street1);
-        Office.setExit("east", street2);
-        Office.setExit("south", street3);
-        Office.setExit("west", street4);
+        office.setExit("east", street2);
+        office.setExit("south", street3);
+        office.setExit("west", street4);
         
         street1.setExit("north", library);
         street1.setExit("east", corner1);
-        street1.setExit("south", office);
         street1.setExit("west", corner4);
         
         corner1.setExit("north", busStation);
@@ -124,7 +122,7 @@ public class Game
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
-        System.out.println("Thank you for playing.  Good bye.");
+        System.out.println("Thank you for playing.  Goodbye.");
     }
 
     private void printWelcome()
@@ -144,7 +142,7 @@ public class Game
         CommandWord commandWord = command.getCommandWord();
 
         if(commandWord == CommandWord.UNKNOWN) {
-            System.out.println("I don't know what you mean... try again");
+            System.out.println("I don't know what you mean... try again!");
             return false;
         }
 
@@ -163,7 +161,7 @@ public class Game
     private void printHelp() 
     {
         System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("around the streets of Sustainia.");
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();

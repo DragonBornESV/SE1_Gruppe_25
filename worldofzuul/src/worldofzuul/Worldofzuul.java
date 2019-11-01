@@ -5,6 +5,8 @@ public class Worldofzuul {
     public static void main(String[] args) {
         Game run = new Game();
         
+        run.play();
+        
         String[] s = new String[]{  "Det er lort!", 
                                     "Det er godt"};
         int[] i = new int[]{100,20};
@@ -14,8 +16,6 @@ public class Worldofzuul {
         
         new NPC(new Say[]{dialog1,dialog2},"Arh, ved du hvad? Jeg tror jeg"
                 + " prøver det der!").runDialog();
-        
-        //run.play();
         
         }
     

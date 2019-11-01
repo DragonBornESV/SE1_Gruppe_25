@@ -13,12 +13,17 @@ public class Game
     }
 
 
-    private void createRooms()
+    public void createRooms()
     {
         Room office, street1, street2, street3, street4, corner1, corner2, 
                 corner3, corner4, library, busStation, bank, gasStation, house, 
                 school, supermarket, clothingStore, oldDecayingBuilding, park, 
                 hospital, recyclingStation;
+        
+        /** Rooms are created and named.
+         *  Rooms are assigned an intro which describes where the player are at.
+         *  Rooms are also assigned an exit command.
+         */
         
         office = new Room("welcome to the Mayers Office! This building is the center of the city and where you start");
         street1 = new Room("standing on North Street. Infront of you are the library and behind you are the Mayers office");
@@ -109,14 +114,13 @@ public class Game
         
         recyclingStation.setExit("south",corner4);
         
-        currentRoom = office;
+        currentRoom = office;  
     }
-
+    
     public void play() 
     {            
         printWelcome();
 
-                
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
@@ -124,7 +128,7 @@ public class Game
         }
         System.out.println("Thank you for playing.  Goodbye.");
     }
-
+    
     private void printWelcome()
     {
         System.out.println();

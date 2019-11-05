@@ -51,20 +51,11 @@ public class Parameter {
         return this.score;
     }
     
-    public void setScore(float num){
-        this.score = num;
-        this.average = (score/attempts)*100;
-    }
-    
     public void addScore(float add){
         this.score += add;
         this.average = (score/attempts)*100;
     }
     
-    public void subScore(float sub){
-        this.score -= sub;
-        this.average = (score/attempts)*100;
-    }
     
     public static void createParameters(){
         Parameter p1 = new Parameter("City Equality");
@@ -83,9 +74,6 @@ public class Parameter {
         
     }
     
-    public void getPercentage(){
-        System.out.println(this.average);
-    }
     /**
      * Returns a string that can be printed out by another method to show progress 
      * in the console. Progress is shown by the bar per 10 percent and as the exact percentage later.

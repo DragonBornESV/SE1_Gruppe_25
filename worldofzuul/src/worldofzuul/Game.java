@@ -5,11 +5,11 @@ public class Game
     private Parser parser;
     private Room currentRoom;
         
+    public static String name;
 
     public Game() 
     {
         parser = new Parser();
-        createRooms();
     }
 
 
@@ -37,7 +37,7 @@ public class Game
         
         //We take all the dialog and use when calling the constructor of the 
         //NPC class. 
-        NPC npc = new NPC(new Say[]{dialog1,dialog2},"Arh, ved du hvad? Jeg tror jeg"
+        NPC npc = new NPC(new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
                 + " prøver det der!");
         
         
@@ -51,7 +51,7 @@ public class Game
          *  Rooms are also assigned an exit command.
          */
         
-        office = new Room("welcome to the Mayers Office! This building is the center of the city and where you start");
+        office = new Room("welcome to the Mayers Office! This building is the center of the city and where you start", npc);
         street1 = new Room("standing on North Street. Infront of you are the library and behind you are the Mayers office");
         street2 = new Room("standing on East Street outside the eastside entrance of the Mayers office. To your right are the gas station");
         street3 = new Room("standing on South Street outside the main entrance of the Mayers office. Infront you are the supermarket");
@@ -162,17 +162,34 @@ public class Game
         System.out.println("Sustainia is a new, incredibly awesome adventure game.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
-        System.out.println(currentRoom.getLongDescription());
+        System.out.println("Please enter your name by writing '" + CommandWord.NAME + "' + your name");
     }
 
     private boolean processCommand(Command command) 
     {
         boolean wantToQuit = false;
-
+        
+        
+        
         CommandWord commandWord = command.getCommandWord();
 
         if(commandWord == CommandWord.UNKNOWN) {
             System.out.println("I don't know what you mean... try again!");
+            return false;
+        }
+        
+        //If the name command is entered.
+        //This statement is placed before the others, so the player is restricted
+        //until they enter their name.
+        if (commandWord == CommandWord.NAME) {
+            nameCharacter(command);
+            return false;
+        }
+        
+        //Stops the player from using the other commands before they have chosen
+        //a name for the character.
+        if (name == null) {
+            System.out.println("You need to enter your name...");
             return false;
         }
 
@@ -192,12 +209,35 @@ public class Game
         else if (commandWord == CommandWord.SAY) {
             System.out.println("You need to start a conversation with someone"
                     + " before you can say anything.\n"
-                    + "If in doubt type 'help'");
+                    + "If in doubt type '" + CommandWord.HELP + "'");
+        }
+        else if (commandWord == CommandWord.LEAVE) {
+            System.out.println("This command is used to leave a conversation.");
+            System.out.println("If you want to quit the game, use '" + CommandWord.QUIT + "'");
         }
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         }
         return wantToQuit;
+    }
+
+    private void nameCharacter(Command command) {
+        //Checks if the player doesn't have a name.
+        if (name == null) {
+            if (command.hasSecondWord()) {
+                name = command.getSecondWord();
+                System.out.println("Hello " + name);
+                
+                createRooms();
+                
+                System.out.println(currentRoom.getLongDescription());
+            } else {
+                System.out.println("Remember to enter your desired name as well...");
+            }
+        } else {    //If they already have a name.
+            System.out.println("You have already named your character...");
+            return;
+        }
     }
 
     private void printHelp() 

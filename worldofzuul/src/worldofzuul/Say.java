@@ -13,6 +13,8 @@ public class Say {
     Parser parser;
     int chosenResponse = 0;
     
+    boolean wantToLeave = false;
+    
     
     /**The constructor for instantiating an instans of the Say class.
      * 
@@ -49,7 +51,7 @@ public class Say {
         
         //Prints the prompt message
         System.out.println("");
-        System.out.println("Type 'say' and the coresponding number for your answer: ");
+        System.out.println("Type '" + CommandWord.SAY + "' and the coresponding number for your answer: ");
         
         //The player loops until they return a valid answer.
         while (true) {
@@ -58,6 +60,11 @@ public class Say {
             //commands just for the conversation scenarios. 
             Command command = parser.getCommand();
             processCommand(command);
+            
+            //Check if the player wants to leave the conversation.
+            if (wantToLeave) {
+                return 0;
+            }
             
             //If chosenResponse is still 0, then it means that the user did not 
             //enter a valid command... That means we loop back around.
@@ -104,8 +111,12 @@ public class Say {
         else if (commandWord == CommandWord.SAY) {
             chooseReponse(command);
         }
+        else if (commandWord == CommandWord.LEAVE) {
+            System.out.println("You are leaving the conversation.");
+            wantToLeave = true;
+        }
         else if (commandWord == CommandWord.QUIT) {
-            //INDSÆT KODE TIL AT RETURNERE TILBAGE
+            System.out.println("If you want to leave the conversation enter '" + CommandWord.LEAVE + "'.");
         }
     }
     
@@ -126,7 +137,7 @@ public class Say {
     private void printHelp() 
     {
         System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("around the streets of Sustainia.");
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();

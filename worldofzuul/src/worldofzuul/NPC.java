@@ -31,6 +31,11 @@ public class NPC {
         for (int i = 0; i < dialog.length; i++) {
             persuasionValue += dialog[i].print();
             
+            //Checks if the player wants to leave the conversation
+            if (dialog[i].wantToLeave == true) {
+                return;
+            }
+            
             //Checks if the limit value is reached. Breaks if true.
             if (persuasionValue >= persuasionTrigger) {
                 break;

@@ -13,7 +13,7 @@ public class Game
     }
 
 
-    public void createRooms()
+    private void createRooms()
     {
         Room office, street1, street2, street3, street4, corner1, corner2, 
                 corner3, corner4, library, busStation, bank, gasStation, house, 

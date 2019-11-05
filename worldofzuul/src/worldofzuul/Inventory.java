@@ -2,22 +2,40 @@ package worldofzuul;
 
 public class Inventory {
     
-    public int pickUpItem = 3;
+
+ 
+//Here the materials are constructed. In the following order given a name, value, weight and quantity.
+ 
+    Material aluminum = new Material("Aluminum ", 0.81, 0.1, 1);
+    Material cloth    = new Material("Cloth    ", 2.10, 0.1, 1);
+    Material compost  = new Material("Compost  ", 0.37, 0.1, 1);
+    Material concrete = new Material("Concrete ", 2.42, 0.1, 1);
+    Material copper   = new Material("Copper   ", 3.50, 0.1, 1);
+    Material glass    = new Material("Glass    ", 0.60, 0.1, 1);
+    Material iron     = new Material("Iron     ", 0.38, 0.1, 1);
+    Material oakWood  = new Material("Oak Wood ", 2.70, 0.1, 1);
+    Material paper    = new Material("Paper    ", 1.75, 0.1, 1);
+    Material plastic  = new Material("Plastic  ", 2.10, 0.1, 1);
+    Material rubber   = new Material("Rubber   ", 1.00, 0.1, 1);
     
-    public int computer = 6000;
-    public int axe = 1;
+// An array is created, which contains one of each material. it is used to print the materials.
+    Material[] materialArray = {aluminum, cloth, compost, concrete, copper, glass, iron, paper, plastic, rubber}; 
+    
+    
+    Material[] computerMaterialArray = {copper, plastic, aluminum, iron};
+    int[] computerMaterialcountArray = {22, 34, 11, 45};
+    Item computer = new Item("Computer ", computerMaterialArray, computerMaterialcountArray, 1);
+    
+    Material[] axeMaterialArray = {iron, aluminum};
+    int[] axeMaterialcountArray = {56, 6};
+    Item axe = new Item("Axe ", axeMaterialArray, axeMaterialcountArray, 1);
+    
+    
+    
     public int hammer = 1;
     
-    public int iron = 5;
-    public int plastic = 5;
-    public int aluminum = 5;
-    public int copper = 5;
-    public int rubber = 5;
-    public int paper = 5;
-    public int cloth = 5;
-    public int glass = 5;
-    public int compost = 5;
-    public int concrete = 5;
+    
+    public int pickUpItem = 3;
     
     public Inventory(){
         updateInventory();
@@ -66,66 +84,18 @@ public class Inventory {
         System.out.println("┌-------------┬-----------┐");
         System.out.println("│  MATERIAL   │    COUNT  │");
         
-        if (aluminum > 0) {
-            System.out.println("├-------------┼-----------┤");
-              System.out.print("│  Aluminum   │  ");
-            System.out.printf("%7d", aluminum);
-            System.out.println("  │");
-        }  
-        if (cloth > 0) {
-            System.out.println("├-------------┼-----------┤");
-              System.out.print("│  Cloth      │  ");
-            System.out.printf("%7d", cloth);
-            System.out.println("  │");
+        for (int i = 0; i < 10; i++){
+       
+            if (materialArray[i].count > 0) {
+                System.out.println("├-------------┼-----------┤");
+                  System.out.print("│  ");
+                  System.out.print(materialArray[i].name);
+                System.out.print("  │  ");
+                System.out.printf("%7d", materialArray[i].count);
+                System.out.println("  │");
+            }
         }
-        if (compost > 0) {
-            System.out.println("├-------------┼-----------┤");
-              System.out.print("│  Compost    │  ");
-            System.out.printf("%7d", compost);
-            System.out.println("  │");
-        }
-        if (concrete > 0) {
-            System.out.println("├-------------┼-----------┤");
-              System.out.print("│  Concrete   │  ");
-            System.out.printf("%7d", concrete);
-            System.out.println("  │");
-        }
-        if (copper > 0) {
-            System.out.println("├-------------┼-----------┤");
-              System.out.print("│  Copper     │  ");
-            System.out.printf("%7d", copper);
-            System.out.println("  │");
-        }
-        if (glass > 0) {
-            System.out.println("├-------------┼-----------┤");
-              System.out.print("│  Glass      │  ");
-            System.out.printf("%7d", glass);
-            System.out.println("  │");
-        }
-        if (iron > 0) {
-            System.out.println("├-------------┼-----------┤");
-              System.out.print("│  Iron       │  ");
-            System.out.printf("%7d", iron);
-            System.out.println("  │");
-        }
-        if (paper > 0) {
-            System.out.println("├-------------┼-----------┤");
-              System.out.print("│  Paper      │  ");
-            System.out.printf("%7d", paper);
-            System.out.println("  │");
-        }
-        if (plastic > 0) {
-            System.out.println("├-------------┼-----------┤");
-              System.out.print("│  Plastic    │  ");
-            System.out.printf("%7d", plastic);
-            System.out.println("  │");
-        }
-        if (rubber > 0) {
-            System.out.println("├-------------┼-----------┤");
-              System.out.print("│  Rubber     │  ");
-            System.out.printf("%7d", rubber);
-            System.out.println("  │");
-        }
+
         System.out.println("└-------------┴-----------┘");
         System.out.println(" ");
     }

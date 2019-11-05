@@ -10,6 +10,7 @@ public class Game
     public Game() 
     {
         parser = new Parser();
+        Parameter.createParameters();
     }
 
 
@@ -328,8 +329,6 @@ public class Game
     {
         boolean wantToQuit = false;
         
-        
-        
         CommandWord commandWord = command.getCommandWord();
 
         if(commandWord == CommandWord.UNKNOWN) {
@@ -375,6 +374,9 @@ public class Game
         else if (commandWord == CommandWord.LEAVE) {
             System.out.println("This command is used to leave a conversation.");
             System.out.println("If you want to quit the game, use '" + CommandWord.QUIT + "'");
+        }
+        else if (commandWord == CommandWord.SCORE){
+            Parameter.printScore();
         }
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);

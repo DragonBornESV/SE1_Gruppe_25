@@ -35,13 +35,13 @@ public class Say {
      * 
      * @return the points gained from the chosen response.
      */
-    public int print() {
+    public int print(String npcName) {
         
         //Prints the NPCs message
         System.out.println("");
         System.out.println("---------------------------------");
         System.out.println("");
-        System.out.println("The person: " + npcText);
+        System.out.println(npcName + ": " + npcText);
         System.out.println("");
         
         //Prints the available responses and the corresponding numbers.

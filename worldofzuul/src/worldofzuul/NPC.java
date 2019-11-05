@@ -11,7 +11,10 @@ public class NPC {
     final int persuasionTrigger = 50;
     final String endTriggerMessage;
     
-    public NPC (Say[] dialog, String endTriggerMessage) {
+    final String npcName;
+    
+    public NPC (String npcName, Say[] dialog, String endTriggerMessage) {
+        this.npcName = npcName;
         this.dialog = dialog;
         this.endTriggerMessage = endTriggerMessage;
     }
@@ -25,11 +28,11 @@ public class NPC {
      * and the dialog ends.
      * 
      */
-    public void runDialog() {
+    public void runDialog(String npcName) {
         //Iterates through the Say objects and runs the print method. The points 
         //are added as it goes along. 
         for (int i = 0; i < dialog.length; i++) {
-            persuasionValue += dialog[i].print();
+            persuasionValue += dialog[i].print(npcName);
             
             //Checks if the player wants to leave the conversation
             if (dialog[i].wantToLeave == true) {
@@ -45,7 +48,7 @@ public class NPC {
         //Checks if the player succeeded. If not a fail message is printed.
         if (persuasionValue < persuasionTrigger) {
             System.out.println("");
-            System.out.println("You failed to convince the person...");
+            System.out.println("You failed to convince " + npcName + "...");
             System.out.println("The person walked away");
             System.out.println("");
             return;

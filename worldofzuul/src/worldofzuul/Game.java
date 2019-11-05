@@ -37,7 +37,7 @@ public class Game
         
         //We take all the dialog and use when calling the constructor of the 
         //NPC class. 
-        NPC npc = new NPC(new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+        NPC npc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
                 + " prøver det der!");
         
         
@@ -201,7 +201,7 @@ public class Game
         }
         else if (commandWord == CommandWord.TALK) {
             if (currentRoom.hasNPC()) {
-                currentRoom.getNPC().runDialog();
+                currentRoom.getNPC().runDialog(currentRoom.getNPC().npcName);
             } else {
                 System.out.println("There is no one to talk to...");
             }

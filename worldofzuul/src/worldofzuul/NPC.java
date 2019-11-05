@@ -10,6 +10,7 @@ public class NPC {
     int persuasionValue = 0;
     final int persuasionTrigger = 50;
     final String endTriggerMessage;
+    boolean pointsGiven = false;
     
     final String npcName;
     
@@ -49,13 +50,19 @@ public class NPC {
         if (persuasionValue < persuasionTrigger) {
             System.out.println("");
             System.out.println("You failed to convince " + npcName + "...");
-            System.out.println("The person walked away");
+            System.out.println("Talk to the person again. "
+                    + "Try to be more convincing this time...");
             System.out.println("");
             return;
         }
         
-        //The succes message is printes out!
-        //INDSÆT KODE TIL AT INKREMENTERE PARAMETERVÆRDIEN!
+        //The succes message is printed out!
+        if (!pointsGiven) {
+            //INDSÆT KODE TIL AT INKREMENTERE PARAMETERVÆRDIEN!
+        }
+        
+        pointsGiven = true;     //After this the player can't get anymore points from this npc.
+        
         System.out.println("");
         System.out.println("---------------------------------");
         System.out.println("");

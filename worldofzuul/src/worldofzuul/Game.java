@@ -17,32 +17,191 @@ public class Game
     {
         
         //Setting up the NPC for the outside room
-        String[] responses1 = new String[]{
+        //MAYOR
+        String[] responsesMayor = new String[]{
                 "Det er lort!", 
                 
                 "Det er godt"};
         
-        int[] responsePoints1 = new int[]{30,30};
-        Say dialog1 = new Say("Hvad er bæredygtighed?", responses1, responsePoints1, parser);
+        int[] responsePointsMayor = new int[]{30,30};
+        Say dialog1 = new Say("Hvad er bæredygtighed?", responsesMayor, responsePointsMayor, parser);
         
-        String[] responses2 = new String[]{
+        String[] responsesMayor2 = new String[]{
                 "Du kan samle affald op, gå ind for "
                 + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
             
                 "Ikke så meget... Du burde hellere bare lade være."};
         
-        int[] responsePoints2 = new int[]{30,0};
+        int[] responsePointsMayor2 = new int[]{30,0};
         Say dialog2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", responses2, responsePoints2, parser);
+                + "", responsesMayor2, responsePointsMayor2, parser);
         
         //We take all the dialog and use when calling the constructor of the 
         //NPC class. 
-        NPC npc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+        NPC mayorNpc = new NPC("the Mayer",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
                 + " prøver det der!");
         
+          //New NPC - Build in the same way as above^
+        String[] responsesBusDriver = new String[]{
+                "Det er lort!", 
+                
+                "Det er godt"};
+        
+        //BUSDRIVER
+        int[] responsePointsBusDriver = new int[]{30,30};
+        Say dialog3 = new Say("Hvad er bæredygtighed?", responsesBusDriver, responsePointsBusDriver, parser);
+        
+        String[] responsesBusDriver2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        
+        int[] responsePointsBusDriver2 = new int[]{30,0};
+        Say dialog4 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", responsesBusDriver2, responsePointsBusDriver2, parser);
+        
+        NPC busDriverNpc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+                + " prøver det der!");
+        
+        /**POLICEMAN
+        int[] responsePointsPo = new int[]{30,30};
+        Say dialog3 = new Say("Hvad er bæredygtighed?", responsesBusDriver, responsePointsBusDriver, parser);
+        
+        String[] responsesBusDriver2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        
+        int[] responsePointsBusDriver2 = new int[]{30,0};
+        Say dialog4 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", responsesBusDriver2, responsePointsBusDriver2, parser);
+        
+        NPC busDriverNpc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+                + " prøver det der!");
+        
+        * int[] responsePointsBusDriver = new int[]{30,30};
+        Say dialog3 = new Say("Hvad er bæredygtighed?", responsesBusDriver, responsePointsBusDriver, parser);
+        
+        String[] responsesBusDriver2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        
+        int[] responsePointsBusDriver2 = new int[]{30,0};
+        Say dialog4 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", responsesBusDriver2, responsePointsBusDriver2, parser);
+        
+        NPC busDriverNpc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+                + " prøver det der!");
+        
+        * BANK MANAGER
+        * int[] responsePointsBusDriver = new int[]{30,30};
+        Say dialog3 = new Say("Hvad er bæredygtighed?", responsesBusDriver, responsePointsBusDriver, parser);
+        
+        String[] responsesBusDriver2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        
+        int[] responsePointsBusDriver2 = new int[]{30,0};
+        Say dialog4 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", responsesBusDriver2, responsePointsBusDriver2, parser);
+        
+        NPC busDriverNpc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+                + " prøver det der!");
+                
+        * TEACHER
+        * int[] responsePointsBusDriver = new int[]{30,30};
+        Say dialog3 = new Say("Hvad er bæredygtighed?", responsesBusDriver, responsePointsBusDriver, parser);
+        
+        String[] responsesBusDriver2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        
+        int[] responsePointsBusDriver2 = new int[]{30,0};
+        Say dialog4 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", responsesBusDriver2, responsePointsBusDriver2, parser);
+        
+        NPC busDriverNpc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+                + " prøver det der!");
+                
+        * STORE CLERK
+        * int[] responsePointsBusDriver = new int[]{30,30};
+        Say dialog3 = new Say("Hvad er bæredygtighed?", responsesBusDriver, responsePointsBusDriver, parser);
+        
+        String[] responsesBusDriver2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        
+        int[] responsePointsBusDriver2 = new int[]{30,0};
+        Say dialog4 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", responsesBusDriver2, responsePointsBusDriver2, parser);
+        
+        NPC busDriverNpc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+                + " prøver det der!");
+                
+        * TRASH CHILD
+        * int[] responsePointsBusDriver = new int[]{30,30};
+        Say dialog3 = new Say("Hvad er bæredygtighed?", responsesBusDriver, responsePointsBusDriver, parser);
+        
+        String[] responsesBusDriver2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        
+        int[] responsePointsBusDriver2 = new int[]{30,0};
+        Say dialog4 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", responsesBusDriver2, responsePointsBusDriver2, parser);
+        
+        NPC busDriverNpc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+                + " prøver det der!");
+                
+        * NURSE
+        * int[] responsePointsBusDriver = new int[]{30,30};
+        Say dialog3 = new Say("Hvad er bæredygtighed?", responsesBusDriver, responsePointsBusDriver, parser);
+        
+        String[] responsesBusDriver2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        
+        int[] responsePointsBusDriver2 = new int[]{30,0};
+        Say dialog4 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", responsesBusDriver2, responsePointsBusDriver2, parser);
+        
+        NPC busDriverNpc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+                + " prøver det der!");
+                
+        * SANITATION WORKER
+        * int[] responsePointsBusDriver = new int[]{30,30};
+        Say dialog3 = new Say("Hvad er bæredygtighed?", responsesBusDriver, responsePointsBusDriver, parser);
+        
+        String[] responsesBusDriver2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        
+        int[] responsePointsBusDriver2 = new int[]{30,0};
+        Say dialog4 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", responsesBusDriver2, responsePointsBusDriver2, parser);
+        
+        NPC busDriverNpc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+                + " prøver det der!");
+        */ 
         
         Room office, street1, street2, street3, street4, corner1, corner2, 
-                corner3, corner4, library, busStation, bank, gasStation, house, 
+                corner3, corner4, nonsustainableHouse, policeStation, bank, clothingFactory, waterPlant, 
                 school, supermarket, clothingStore, oldDecayingBuilding, park, 
                 hospital, recyclingStation;
         
@@ -51,48 +210,48 @@ public class Game
          *  Rooms are also assigned an exit command.
          */
         
-        office = new Room("welcome to the Mayers Office! This building is the center of the city and where you start", npc);
-        street1 = new Room("standing on North Street. Infront of you are the library and behind you are the Mayers office");
-        street2 = new Room("standing on East Street outside the eastside entrance of the Mayers office. To your right are the gas station");
-        street3 = new Room("standing on South Street outside the main entrance of the Mayers office. Infront you are the supermarket");
-        street4 = new Room("standing on West Street outside the westside entrance of the Mayers office. To your left are the park");
-        corner1 = new Room("standing on the northeast corner. Infront of you are the bus station and to your right are the bank");
+        office = new Room("welcome to the Mayors Office! This building is the center of the city and where you start", mayorNpc);
+        street1 = new Room("standing on North Street. Infront of you are the library and behind you are the Mayors office");
+        street2 = new Room("standing on East Street outside the eastside entrance of the Mayors office. To your right are the gas station");
+        street3 = new Room("standing on South Street outside the main entrance of the Mayors office. Infront you are the supermarket");
+        street4 = new Room("standing on West Street outside the westside entrance of the Mayors office. To your left are the park");
+        corner1 = new Room("standing on the northeast corner and there are a busstop. Infront of you are the police station and to your right are the bank", busDriverNpc);
         corner2 = new Room("standing on the southeast corner. To your right are your house and behind you are the school");
         corner3 = new Room("standing on the southwest corner. Behind you are the clothing store and to your left are the old decaying building");
         corner4 = new Room("standing on the northwest corner. To your left are the hospital and infront of you are the recycling station");
-        library = new Room("in the library");
-        busStation = new Room("at the bus station");
-        bank = new Room("in the bank");
-        gasStation = new Room("at the gas station");
-        house = new Room("in your house");
-        school = new Room("in the school");
+        nonsustainableHouse = new Room("in your house which are nonsustainable");
+        policeStation = new Room("at the police station", policemanNpc);
+        bank = new Room("in the bank", bankManagerNpc);
+        clothingFactory = new Room("at the clothing factory");
+        waterPlant = new Room("at the water plant");
+        school = new Room("in the school", teacherNpc);
         supermarket = new Room("in the supermarket");
-        clothingStore = new Room("in the clothing store");
+        clothingStore = new Room("in the clothing store", storeClerkNpc);
         oldDecayingBuilding = new Room("in an old decaying building");
-        park = new Room("in the park");
-        hospital = new Room("in the hospital");
-        recyclingStation = new Room("at the recycling station");
+        park = new Room("in the park", trashChildNpc);
+        hospital = new Room("in the hospital", nurseNpc);
+        recyclingStation = new Room("at the recycling station", sanitationWorkerNpc);
         
         office.setExit("east", street2);
         office.setExit("south", street3);
         office.setExit("west", street4);
         
-        street1.setExit("north", library);
+        street1.setExit("north", nonsustainableHouse);
         street1.setExit("east", corner1);
         street1.setExit("west", corner4);
         
-        corner1.setExit("north", busStation);
+        corner1.setExit("north", policeStation);
         corner1.setExit("east", bank);
         corner1.setExit("south", street2);
         corner1.setExit("west", street1);
         
         street2.setExit("north", corner1);
-        street2.setExit("east", gasStation);
+        street2.setExit("east", clothingFactory);
         street2.setExit("south", corner2);
         street2.setExit("west", office);
         
         corner2.setExit("north", street2);
-        corner2.setExit("east", house);
+        corner2.setExit("east", waterPlant);
         corner2.setExit("south", school);
         corner2.setExit("west", street3);
         
@@ -116,15 +275,15 @@ public class Game
         corner4.setExit("south", street4);
         corner4.setExit("west", hospital);
         
-        library.setExit("south", street1);
+        nonsustainableHouse.setExit("south", street1);
         
-        busStation.setExit("south", corner1);
+        policeStation.setExit("south", corner1);
         
         bank.setExit("west", corner1);
         
-        gasStation.setExit("west", street2);
+        clothingFactory.setExit("west", street2);
         
-        house.setExit("west", corner2);
+        waterPlant.setExit("west", corner2);
         
         school.setExit("north", corner2);
         
@@ -201,7 +360,9 @@ public class Game
         }
         else if (commandWord == CommandWord.TALK) {
             if (currentRoom.hasNPC()) {
+                //Starts the conversation with the NPC
                 currentRoom.getNPC().runDialog(currentRoom.getNPC().npcName);
+                
             } else {
                 System.out.println("There is no one to talk to...");
             }

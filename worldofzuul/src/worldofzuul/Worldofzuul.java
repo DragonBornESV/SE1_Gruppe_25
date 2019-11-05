@@ -6,6 +6,7 @@ public class Worldofzuul {
         Game run = new Game();
         
         run.play();
+        
     }
     
 }

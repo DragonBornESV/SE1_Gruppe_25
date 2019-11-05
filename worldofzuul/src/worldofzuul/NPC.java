@@ -31,6 +31,14 @@ public class NPC {
         this.npcName = npcName;
         this.dialog = dialog;
         this.endTriggerMessage = endTriggerMessage;
+        this.parameterName = parameterName;
+        this.points = points;
+    }
+    
+    public NPC (String npcName, Say[] dialog, String endTriggerMessage) {
+        this.npcName = npcName;
+        this.dialog = dialog;
+        this.endTriggerMessage = endTriggerMessage;
     }
     
     /**Initiates the dialog with the NPC.
@@ -70,7 +78,7 @@ public class NPC {
         }
         
         //The succes message is printed out!
-        if (!pointsGiven) {
+        if (!pointsGiven || parameterName != null) {
             Parameter.mapAddScore(parameterName, points);
         }
         

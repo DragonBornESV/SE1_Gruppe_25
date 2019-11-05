@@ -18,188 +18,243 @@ public class Game
     {
         
         //Setting up the NPC for the outside room
+        //responses are shortend to r, responsesPoints are shortend to rp 
+        //and dialog are shortend to d.
         //MAYOR
-        String[] responsesMayor = new String[]{
+        String[] rMayor = new String[]{
                 "Det er lort!", 
                 
                 "Det er godt"};
         
-        int[] responsePointsMayor = new int[]{30,30};
-        Say dialog1 = new Say("Hvad er bæredygtighed?", responsesMayor, responsePointsMayor, parser);
+        int[] rpMayor = new int[]{30,30};
+        Say dMayor1 = new Say("Hvad er bæredygtighed?", rMayor, rpMayor, parser);
         
-        String[] responsesMayor2 = new String[]{
+        String[] rMayor2 = new String[]{
                 "Du kan samle affald op, gå ind for "
                 + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
             
                 "Ikke så meget... Du burde hellere bare lade være."};
         
-        int[] responsePointsMayor2 = new int[]{30,0};
-        Say dialog2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", responsesMayor2, responsePointsMayor2, parser);
+        int[] rpMayor2 = new int[]{30,0};
+        Say dMayor2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", rMayor2, rpMayor2, parser);
         
         //We take all the dialog and use when calling the constructor of the 
         //NPC class. 
-        NPC mayorNpc = new NPC("the Mayer",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+        NPC mayorNpc = new NPC("the Mayor",new Say[]{dMayor1,dMayor2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
                 + " prøver det der!");
         
-          //New NPC - Build in the same way as above^
-        String[] responsesBusDriver = new String[]{
-                "Det er lort!", 
-                
-                "Det er godt"};
-        
+        //New NPC - Build in the same way as above^^   
         //BUSDRIVER
-        int[] responsePointsBusDriver = new int[]{30,30};
-        Say dialog3 = new Say("Hvad er bæredygtighed?", responsesBusDriver, responsePointsBusDriver, parser);
-        
-        String[] responsesBusDriver2 = new String[]{
+        String[] rBusDriver1 = new String[]{
                 "Du kan samle affald op, gå ind for "
                 + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
             
                 "Ikke så meget... Du burde hellere bare lade være."};
         
-        int[] responsePointsBusDriver2 = new int[]{30,0};
-        Say dialog4 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", responsesBusDriver2, responsePointsBusDriver2, parser);
+        int[] rpBusDriver1 = new int[]{30,30};
+        Say dBusDriver1 = new Say("Hvad er bæredygtighed?", rBusDriver1, rpBusDriver1, parser);
         
-        NPC busDriverNpc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+        String[] rBusDriver2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpBusDriver2 = new int[]{30,30};
+        Say dBusDriver2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", rBusDriver2, rpBusDriver2, parser);
+        
+        NPC busDriverNpc = new NPC("the officer",new Say[]{dBusDriver1,dBusDriver2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
                 + " prøver det der!");
         
-        /**POLICEMAN
-        int[] responsePointsPo = new int[]{30,30};
-        Say dialog3 = new Say("Hvad er bæredygtighed?", responsesBusDriver, responsePointsBusDriver, parser);
-        
-        String[] responsesBusDriver2 = new String[]{
+        //OFFICER      
+        String[] rOfficer1 = new String[]{
                 "Du kan samle affald op, gå ind for "
                 + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
             
                 "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpOfficer1 = new int[]{30,30};
+        Say dOfficer1 = new Say("Hvad er bæredygtighed?", rOfficer1, rpOfficer1, parser);
         
-        int[] responsePointsBusDriver2 = new int[]{30,0};
-        Say dialog4 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", responsesBusDriver2, responsePointsBusDriver2, parser);
+        String[] rOfficer2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpOfficer2 = new int[]{30,30};
+        Say dOfficer2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", rOfficer2, rpOfficer2, parser);
         
-        NPC busDriverNpc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+        NPC officerNpc = new NPC("the officer",new Say[]{dOfficer1,dOfficer2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
                 + " prøver det der!");
-        
-        * int[] responsePointsBusDriver = new int[]{30,30};
-        Say dialog3 = new Say("Hvad er bæredygtighed?", responsesBusDriver, responsePointsBusDriver, parser);
-        
-        String[] responsesBusDriver2 = new String[]{
+       
+        // BANK MANAGER
+        String[] rBankManager1 = new String[]{
                 "Du kan samle affald op, gå ind for "
                 + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
             
                 "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpBankManager1 = new int[]{30,30};
+        Say dBankManager1 = new Say("Hvad er bæredygtighed?", rBankManager1, rpBankManager1, parser);
         
-        int[] responsePointsBusDriver2 = new int[]{30,0};
-        Say dialog4 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", responsesBusDriver2, responsePointsBusDriver2, parser);
-        
-        NPC busDriverNpc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
-                + " prøver det der!");
-        
-        * BANK MANAGER
-        * int[] responsePointsBusDriver = new int[]{30,30};
-        Say dialog3 = new Say("Hvad er bæredygtighed?", responsesBusDriver, responsePointsBusDriver, parser);
-        
-        String[] responsesBusDriver2 = new String[]{
+        String[] rBankManager2 = new String[]{
                 "Du kan samle affald op, gå ind for "
                 + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
             
                 "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpBankManager2 = new int[]{30,30};
+        Say dBankManager2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", rBankManager2, rpBankManager2, parser);
         
-        int[] responsePointsBusDriver2 = new int[]{30,0};
-        Say dialog4 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", responsesBusDriver2, responsePointsBusDriver2, parser);
-        
-        NPC busDriverNpc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+        NPC bankManagerNpc = new NPC("the officer",new Say[]{dBankManager1,dBankManager2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
                 + " prøver det der!");
                 
-        * TEACHER
-        * int[] responsePointsBusDriver = new int[]{30,30};
-        Say dialog3 = new Say("Hvad er bæredygtighed?", responsesBusDriver, responsePointsBusDriver, parser);
-        
-        String[] responsesBusDriver2 = new String[]{
+        //TEACHER
+        String[] rTeacher1 = new String[]{
                 "Du kan samle affald op, gå ind for "
                 + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
             
                 "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpTeacher1 = new int[]{30,30};
+        Say dTeacher1 = new Say("Hvad er bæredygtighed?", rTeacher1, rpTeacher1, parser);
         
-        int[] responsePointsBusDriver2 = new int[]{30,0};
-        Say dialog4 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", responsesBusDriver2, responsePointsBusDriver2, parser);
+        String[] rTeacher2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpTeacher2 = new int[]{30,30};
+        Say dTeacher2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", rTeacher2, rpTeacher2, parser);
         
-        NPC busDriverNpc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+        NPC teacherNpc = new NPC("the officer",new Say[]{dTeacher1,dTeacher2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
                 + " prøver det der!");
                 
-        * STORE CLERK
-        * int[] responsePointsBusDriver = new int[]{30,30};
-        Say dialog3 = new Say("Hvad er bæredygtighed?", responsesBusDriver, responsePointsBusDriver, parser);
-        
-        String[] responsesBusDriver2 = new String[]{
+        //STORE CLERK
+        String[] rStoreClerk1 = new String[]{
                 "Du kan samle affald op, gå ind for "
                 + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
             
                 "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpStoreClerk1 = new int[]{30,30};
+        Say dStoreClerk1 = new Say("Hvad er bæredygtighed?", rStoreClerk1, rpStoreClerk1, parser);
         
-        int[] responsePointsBusDriver2 = new int[]{30,0};
-        Say dialog4 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", responsesBusDriver2, responsePointsBusDriver2, parser);
+        String[] rStoreClerk2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpStoreClerk2 = new int[]{30,30};
+        Say dStoreClerk2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", rStoreClerk2, rpStoreClerk2, parser);
         
-        NPC busDriverNpc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+        NPC storeClerkNpc = new NPC("the officer",new Say[]{dStoreClerk1,dStoreClerk2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
                 + " prøver det der!");
                 
-        * TRASH CHILD
-        * int[] responsePointsBusDriver = new int[]{30,30};
-        Say dialog3 = new Say("Hvad er bæredygtighed?", responsesBusDriver, responsePointsBusDriver, parser);
-        
-        String[] responsesBusDriver2 = new String[]{
+        //TRASH CHILD
+        String[] rTrashChild1 = new String[]{
                 "Du kan samle affald op, gå ind for "
                 + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
             
                 "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpTrashChild1 = new int[]{30,30};
+        Say dTrashChild1 = new Say("Hvad er bæredygtighed?", rTrashChild1, rpTrashChild1, parser);
         
-        int[] responsePointsBusDriver2 = new int[]{30,0};
-        Say dialog4 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", responsesBusDriver2, responsePointsBusDriver2, parser);
+        String[] rTrashChild2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpTrashChild2 = new int[]{30,30};
+        Say dTrashChild2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", rStoreClerk2, rpStoreClerk2, parser);
         
-        NPC busDriverNpc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+        NPC trashChildNpc = new NPC("the officer",new Say[]{dTrashChild1,dTrashChild2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
                 + " prøver det der!");
                 
-        * NURSE
-        * int[] responsePointsBusDriver = new int[]{30,30};
-        Say dialog3 = new Say("Hvad er bæredygtighed?", responsesBusDriver, responsePointsBusDriver, parser);
-        
-        String[] responsesBusDriver2 = new String[]{
+        //NURSE
+        String[] rNurse1 = new String[]{
                 "Du kan samle affald op, gå ind for "
                 + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
             
                 "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpNurse1 = new int[]{30,30};
+        Say dNurse1 = new Say("Hvad er bæredygtighed?", rNurse1, rpNurse1, parser);
         
-        int[] responsePointsBusDriver2 = new int[]{30,0};
-        Say dialog4 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", responsesBusDriver2, responsePointsBusDriver2, parser);
+        String[] rNurse2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpNurse2 = new int[]{30,30};
+        Say dNurse2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", rNurse2, rpNurse2, parser);
         
-        NPC busDriverNpc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+        NPC nurseNpc = new NPC("the officer",new Say[]{dNurse1,dNurse2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
                 + " prøver det der!");
                 
-        * SANITATION WORKER
-        * int[] responsePointsBusDriver = new int[]{30,30};
-        Say dialog3 = new Say("Hvad er bæredygtighed?", responsesBusDriver, responsePointsBusDriver, parser);
-        
-        String[] responsesBusDriver2 = new String[]{
+        //SANITATION WORKER
+        String[] rSanitationWorker1 = new String[]{
                 "Du kan samle affald op, gå ind for "
                 + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
             
                 "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpSanitationWorker1 = new int[]{30,30};
+        Say dSanitationWorker1 = new Say("Hvad er bæredygtighed?", rSanitationWorker1, rpSanitationWorker1, parser);
         
-        int[] responsePointsBusDriver2 = new int[]{30,0};
-        Say dialog4 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", responsesBusDriver2, responsePointsBusDriver2, parser);
+        String[] rSanitationWorker2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpSanitationWorker2 = new int[]{30,30};
+        Say dSanitationWorker2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", rSanitationWorker2, rpSanitationWorker2, parser);
         
-        NPC busDriverNpc = new NPC("the bus driver",new Say[]{dialog1,dialog2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+        NPC sanitationWorkerNpc = new NPC("the officer",new Say[]{dSanitationWorker1,dSanitationWorker2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
                 + " prøver det der!");
-        */ 
+                        
+        //CASHIER
+        String[] rCashier1 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpCashier1 = new int[]{30,30};
+        Say dCashier1 = new Say("Hvad er bæredygtighed?", rCashier1, rpCashier1, parser);
+        
+        String[] rCashier2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpCashier2 = new int[]{30,30};
+        Say dCashier2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", rCashier2, rpCashier2, parser);
+        
+        NPC cashierNpc = new NPC("the officer",new Say[]{dCashier1,dCashier2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+                + " prøver det der!");
+                        
+        //FACTORY WORKER
+        String[] rFactoryWorker1 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpFactoryWorker1 = new int[]{30,30};
+        Say dFactoryWorker1 = new Say("Hvad er bæredygtighed?", rFactoryWorker1, rpFactoryWorker1, parser);
+        
+        String[] rFactoryWorker2 = new String[]{
+                "Du kan samle affald op, gå ind for "
+                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
+            
+                "Ikke så meget... Du burde hellere bare lade være."};
+        int[] rpFactoryWorker2 = new int[]{30,30};
+        Say dFactoryWorker2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+                + "", rFactoryWorker2, rpFactoryWorker2, parser);
+        
+        NPC factoryWorkerNpc = new NPC("the officer",new Say[]{dFactoryWorker1,dFactoryWorker2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
+                + " prøver det der!");
         
         Room office, street1, street2, street3, street4, corner1, corner2, 
                 corner3, corner4, nonsustainableHouse, policeStation, bank, clothingFactory, waterPlant, 
@@ -221,12 +276,12 @@ public class Game
         corner3 = new Room("standing on the southwest corner. Behind you are the clothing store and to your left are the old decaying building");
         corner4 = new Room("standing on the northwest corner. To your left are the hospital and infront of you are the recycling station");
         nonsustainableHouse = new Room("in your house which are nonsustainable");
-        policeStation = new Room("at the police station", policemanNpc);
+        policeStation = new Room("at the police station", officerNpc);
         bank = new Room("in the bank", bankManagerNpc);
-        clothingFactory = new Room("at the clothing factory");
+        clothingFactory = new Room("at the clothing factory", factoryWorkerNpc);
         waterPlant = new Room("at the water plant");
         school = new Room("in the school", teacherNpc);
-        supermarket = new Room("in the supermarket");
+        supermarket = new Room("in the supermarket", cashierNpc);
         clothingStore = new Room("in the clothing store", storeClerkNpc);
         oldDecayingBuilding = new Room("in an old decaying building");
         park = new Room("in the park", trashChildNpc);

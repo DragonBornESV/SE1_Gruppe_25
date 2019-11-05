@@ -9,7 +9,6 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;
-    
     private NPC npc;
 
     public Room(String description) 

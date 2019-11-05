@@ -7,6 +7,6 @@ public class Worldofzuul {
         
         run.play();
         
-        }
-    
     }
+    
+}

@@ -12,9 +12,22 @@ public class NPC {
     final String endTriggerMessage;
     boolean pointsGiven = false;
     
+    String parameterName;   //The name of the parameter this NPC effects.
+    int points;             //The points the parameter change with.
+    
     final String npcName;
     
-    public NPC (String npcName, Say[] dialog, String endTriggerMessage) {
+    /**
+     * 
+     * 
+     * @param npcName The name of the NPC.
+     * @param dialog the instances of the Say class that dictates the content of the conversation.
+     * @param endTriggerMessage the end message if the person is persuated.
+     * @param parameterName the parameter you want to adjust.
+     * @param points the points you want to adjust the parameter with.
+     */
+    public NPC (String npcName, Say[] dialog, String endTriggerMessage, 
+            String parameterName, int points) {
         this.npcName = npcName;
         this.dialog = dialog;
         this.endTriggerMessage = endTriggerMessage;
@@ -58,7 +71,7 @@ public class NPC {
         
         //The succes message is printed out!
         if (!pointsGiven) {
-            //INDSÆT KODE TIL AT INKREMENTERE PARAMETERVÆRDIEN!
+            Parameter.mapAddScore(parameterName, points);
         }
         
         pointsGiven = true;     //After this the player can't get anymore points from this npc.

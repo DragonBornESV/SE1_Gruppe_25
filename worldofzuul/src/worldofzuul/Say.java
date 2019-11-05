@@ -7,13 +7,13 @@ package worldofzuul;
  * the printing of dialog and the choosing of responses.
  */
 public class Say {
-    String npcText;
-    String[] responses;
-    int[] persuasionPoints;
-    Parser parser;
-    int chosenResponse = 0;
+    private String npcText;
+    private String[] responses;
+    private int[] persuasionPoints;
+    private Parser parser;
+    private int chosenResponse = 0;
     
-    boolean wantToLeave = false;
+    private boolean wantToLeave = false;
     
     
     /**The constructor for instantiating an instans of the Say class.
@@ -62,7 +62,7 @@ public class Say {
             processCommand(command);
             
             //Check if the player wants to leave the conversation.
-            if (wantToLeave) {
+            if (isWantToLeave()) {
                 return 0;
             }
             
@@ -141,5 +141,12 @@ public class Say {
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
+    }
+
+    /**
+     * @return the wantToLeave
+     */
+    public boolean isWantToLeave() {
+        return wantToLeave;
     }
 }

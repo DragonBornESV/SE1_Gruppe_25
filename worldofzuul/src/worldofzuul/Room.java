@@ -38,7 +38,7 @@ public class Room
         String npcNotification = "";
         
         if (npc != null) {
-            npcNotification = "You can talk to " + npc.npcName + ".\n";
+            npcNotification = "You can talk to " + npc.getNpcName() + ".\n";
         }
         
         return "You are " + description + ".\n" + npcNotification + getExitString();

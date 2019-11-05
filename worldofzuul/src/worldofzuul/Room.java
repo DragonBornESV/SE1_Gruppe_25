@@ -35,7 +35,13 @@ public class Room
 
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString();
+        String npcNotification = "";
+        
+        if (npc != null) {
+            npcNotification = "You can talk to " + npc.npcName + ".\n";
+        }
+        
+        return "You are " + description + ".\n" + npcNotification + getExitString();
     }
 
     private String getExitString()

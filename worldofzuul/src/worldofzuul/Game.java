@@ -28,7 +28,7 @@ public class Game
                 "Yes, i do", "No, i don´t"};
         
         int[] rpMayor = new int[]{25,25};
-        Say dMayor1 = new Say("Hallo!\nI´m Mayor Mcclane and welcome to my city!\nSustainia doesn´t exceed our goal of creating a sustainiable city, so i need your help!"
+        Say dMayor1 = new Say("Hello " + Game.name+ "!"+"\nI´m Mayor Mcclane and welcome to my city!\nSustainia doesn´t exceed our goal of creating a sustainiable city, so i need your help!"
                 + "\n\nDo you know what sustainability means?", rMayor, rpMayor, parser);
         
         String[] rMayor2 = new String[]{
@@ -48,30 +48,26 @@ public class Game
         //We take all the dialog and use when calling the constructor of the 
         //NPC class. 
         NPC mayorNpc = new NPC("The Mayor",new Say[]{dMayor1,dMayor2,dMayor3},"Alright " 
-                + Game.name + "!\nLet´s get started!","City Security",-300);
+                + Game.name + "!\nLet´s get started!","City Security",30);
         
         //New NPC - Build in the same way as above^^   
         //BUSDRIVER
         String[] rBusDriver1 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "Car", "Bike", "Bus", };
         
-        int[] rpBusDriver1 = new int[]{30,30};
-        Say dBusDriver1 = new Say("Hvad er bæredygtighed?", rBusDriver1, rpBusDriver1, parser);
+        int[] rpBusDriver1 = new int[]{0,25,25};
+        Say dBusDriver1 = new Say("Hello " + Game.name+ "!"
+                +"\nMy name is Bob "
+                + "", rBusDriver1, rpBusDriver1, parser);
         
         String[] rBusDriver2 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
-        int[] rpBusDriver2 = new int[]{30,30};
-        Say dBusDriver2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", rBusDriver2, rpBusDriver2, parser);
+                "", ""};
         
-        NPC busDriverNpc = new NPC("the officer",new Say[]{dBusDriver1,dBusDriver2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
-                + " prøver det der!");
+        int[] rpBusDriver2 = new int[]{30,30};
+        Say dBusDriver2 = new Say("", rBusDriver2, rpBusDriver2, parser);
+        
+        NPC busDriverNpc = new NPC("The Bus driver",new Say[]{dBusDriver1,dBusDriver2},"Alright " 
+                + Game.name + "!\nLet´s get started!","City Green Energy",30);
         
         //OFFICER      
         String[] rOfficer1 = new String[]{
@@ -373,6 +369,7 @@ public class Game
             finished = processCommand(command);
             
             if (mainScore.mainScore.getMainAverage() <= 0) {
+
                 Parameter.printScore();
                 System.out.println("You lost the game noob.");
                 finished = true;

@@ -55,7 +55,7 @@ public class Game
         String[] rBusDriver1 = new String[]{
                 "Car", "Bike", "Bus", };
         
-        int[] rpBusDriver1 = new int[]{30,30,};
+        int[] rpBusDriver1 = new int[]{0,25,25};
         Say dBusDriver1 = new Say("Hello " + Game.name+ "!"
                 +"\nMy name is Bob "
                 + "", rBusDriver1, rpBusDriver1, parser);

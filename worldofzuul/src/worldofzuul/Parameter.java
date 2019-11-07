@@ -19,23 +19,20 @@ public class Parameter {
     private String name;
     private float score;
     public static Map<String, Parameter> parameterList = new HashMap<>();
-    private float attempts;
     private float average;
-    
+    public static Parameter mainScore = new Parameter();
     
     /**
      * 
      * @param name      The name of the parameter to value the game.
-     * attempts  The number of attempts that the user has taken.
      * score     The score that the user is valued from, and base value is set to 20.
      * average   The score converted to percentage as an average to display the score.
      */
     
     public Parameter(String name) {
     this.name = name;
-    this.attempts = 100;
     this.score = 20;
-    this.average = (score/attempts)*100;
+    this.average = (score/100)*100;
     parameterList.put(this.name, this);
     }
     public Parameter(){
@@ -53,7 +50,7 @@ public class Parameter {
     
     public void addScore(float add){
         this.score += add;
-        this.average = (score/attempts)*100;
+        this.average = (score/100)*100;
     }
     
     
@@ -67,13 +64,22 @@ public class Parameter {
         Parameter p7 = new Parameter("City Security");
     }
     
+    /**
+     * How to add score to a specific parameter, and checking if it's a null value.
+     * 
+     * @param name Name of parameter to add score value to.
+     * @param add Score value to add to the parameter.
+     */
     public static void mapAddScore(String name, float add){
         if (name != null) {
             Parameter p = parameterList.get(name);
             p.addScore(add);
-            p.attempts++;
             parameterList.put(name, p);
-
+            
+            if (mainScore.getMainAverage() >= 100) {
+                System.out.println("Congratulations you won the game!");
+                Parameter.printScore();   
+            }
         }
     }
     
@@ -107,12 +113,18 @@ public class Parameter {
         }
     }
     
-    public float getAverage(){
-        return (this.score/this.attempts)*100;      
+    public float getMainAverage(){
+        float value = 0;
+        
+        for (Map.Entry<String, Parameter> entry : parameterList.entrySet()){
+            value += entry.getValue().getScore();
+        }   
+        
+        return value/parameterList.size();
     }
     
-    public void setAverage(float average){
-        this.average = average;
+    public float getAverage(){
+        return (this.getScore()/100)*100;
     }
     
     /**
@@ -120,21 +132,13 @@ public class Parameter {
     * printScore() also creates a mainScore object to show the main score of the game.
     */
     public static void printScore(){ //viser progressbar for Main Score/Parameter
-        float value = 0;
         System.out.println("|-------------------------------------------------|");
         
         for (Map.Entry<String, Parameter> entry : parameterList.entrySet()){
             System.out.println(entry.getKey() + ":   \t\t" + entry.getValue().progressBar() + " " + Math.round(entry.getValue().getAverage()) + "%");
         }
         
-        for (Map.Entry<String, Parameter> entry : parameterList.entrySet()){
-            value += entry.getValue().getAverage();
-        }
-        
         System.out.println("|-------------------------------------------------|");
-        float main = value/7;
-        Parameter mainScore = new Parameter();
-        mainScore.setAverage(main);
-        System.out.println(mainScore.getName() + ":\t\t" + mainScore.progressBar() + " " + Math.round(main) + "%");
+        System.out.println(mainScore.getName() + ":\t\t" + mainScore.progressBar() + " " + Math.round(mainScore.getMainAverage()) + "%");
     }
 }

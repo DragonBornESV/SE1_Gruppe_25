@@ -6,16 +6,16 @@ package worldofzuul;
  *
  */
 public class NPC {
-    final Say[] dialog;
-    int persuasionValue = 0;
-    final int persuasionTrigger = 50;
-    final String endTriggerMessage;
-    boolean pointsGiven = false;
+    private final Say[] dialog;
+    private int persuasionValue = 0;
+    private final int persuasionTrigger = 50;
+    private final String endTriggerMessage;
+    private boolean pointsGiven = false;
     
-    String parameterName;   //The name of the parameter this NPC effects.
-    int points;             //The points the parameter change with.
+    private String parameterName;   //The name of the parameter this NPC effects.
+    private int points;             //The points the parameter change with.
     
-    final String npcName;
+    private final String npcName;
     
     /**
      * 
@@ -57,7 +57,7 @@ public class NPC {
             persuasionValue += dialog[i].print(npcName);
             
             //Checks if the player wants to leave the conversation
-            if (dialog[i].wantToLeave == true) {
+            if (dialog[i].isWantToLeave() == true) {
                 return;
             }
             
@@ -78,11 +78,12 @@ public class NPC {
         }
         
         //The succes message is printed out!
-        if (!pointsGiven || parameterName != null) {
+        //But only if they haven't given points yet and a parameter name is specified
+        if (!pointsGiven && parameterName != null) {
             Parameter.mapAddScore(parameterName, points);
+            pointsGiven = true;     //After this the player can't get anymore points from this npc.
+            System.out.println("You've gained " + points + "% in '" + parameterName + "'!");
         }
-        
-        pointsGiven = true;     //After this the player can't get anymore points from this npc.
         
         System.out.println("");
         System.out.println("---------------------------------");
@@ -90,6 +91,13 @@ public class NPC {
         System.out.println(endTriggerMessage);
         System.out.println("");
         
+    }
+
+    /**
+     * @return the npcName
+     */
+    public String getNpcName() {
+        return npcName;
     }
     
 }

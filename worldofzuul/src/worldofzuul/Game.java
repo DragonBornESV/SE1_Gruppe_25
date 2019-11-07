@@ -1,5 +1,7 @@
 package worldofzuul;
 
+import static worldofzuul.Parameter.parameterList;
+
 public class Game 
 {
     private Parser parser;
@@ -358,16 +360,21 @@ public class Game
         currentRoom = office;  
     }
     
-    public void play() 
-    {            
+    public void play() {            
         printWelcome();
 
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
+            
+            if (parameterList.get(name).getScore() <= 0) {
+                System.out.println("You lost the game noob.");
+                Parameter.printScore();
+                finished = true;
         }
         System.out.println("Thank you for playing.  Goodbye.");
+    }
     }
     
     private void printWelcome()

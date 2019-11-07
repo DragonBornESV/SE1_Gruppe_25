@@ -21,7 +21,7 @@ public class Parameter {
     public static Map<String, Parameter> parameterList = new HashMap<>();
     private float attempts;
     private float average;
-    
+    public static Parameter mainScore = new Parameter();
     
     /**
      * 
@@ -51,20 +51,11 @@ public class Parameter {
         return this.score;
     }
     
-    public void setScore(float num){
-        this.score = num;
-        this.average = (score/attempts)*100;
-    }
-    
     public void addScore(float add){
         this.score += add;
         this.average = (score/attempts)*100;
     }
     
-    public void subScore(float sub){
-        this.score -= sub;
-        this.average = (score/attempts)*100;
-    }
     
     public static void createParameters(){
         Parameter p1 = new Parameter("City Equality");
@@ -76,16 +67,26 @@ public class Parameter {
         Parameter p7 = new Parameter("City Security");
     }
     
+    /**
+     * How to add score to a specific parameter, and checking if it's a null value.
+     * 
+     * @param name Name of parameter to add score value to.
+     * @param add Score value to add to the parameter.
+     */
     public static void mapAddScore(String name, float add){
-        Parameter p = parameterList.get(name);
-        p.addScore(add);
-        parameterList.put(name, p);
-        
+        if (name != null) {
+            Parameter p = parameterList.get(name);
+            p.addScore(add);
+            p.attempts++;
+            parameterList.put(name, p);
+            
+            if (parameterList.get(name).getScore() >= 100) {
+                System.out.println("Congratulations you won the game!");
+                Parameter.printScore();   
+            }
+        }
     }
     
-    public void getPercentage(){
-        System.out.println(this.average);
-    }
     /**
      * Returns a string that can be printed out by another method to show progress 
      * in the console. Progress is shown by the bar per 10 percent and as the exact percentage later.
@@ -142,7 +143,6 @@ public class Parameter {
         
         System.out.println("|-------------------------------------------------|");
         float main = value/7;
-        Parameter mainScore = new Parameter();
         mainScore.setAverage(main);
         System.out.println(mainScore.getName() + ":\t\t" + mainScore.progressBar() + " " + Math.round(main) + "%");
     }

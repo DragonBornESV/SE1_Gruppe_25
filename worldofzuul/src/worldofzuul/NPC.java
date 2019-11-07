@@ -31,6 +31,14 @@ public class NPC {
         this.npcName = npcName;
         this.dialog = dialog;
         this.endTriggerMessage = endTriggerMessage;
+        this.parameterName = parameterName;
+        this.points = points;
+    }
+    
+    public NPC (String npcName, Say[] dialog, String endTriggerMessage) {
+        this.npcName = npcName;
+        this.dialog = dialog;
+        this.endTriggerMessage = endTriggerMessage;
     }
     
     /**Initiates the dialog with the NPC.
@@ -70,11 +78,16 @@ public class NPC {
         }
         
         //The succes message is printed out!
-        if (!pointsGiven) {
+        //But only if they haven't given points yet and a parameter name is specified
+        if (!pointsGiven || parameterName != null) {
             Parameter.mapAddScore(parameterName, points);
+            
+            System.out.println("You've gained " + points + "% in '" + parameterName + "'!");
         }
         
         pointsGiven = true;     //After this the player can't get anymore points from this npc.
+        
+        
         
         System.out.println("");
         System.out.println("---------------------------------");

@@ -68,10 +68,13 @@ public class Parameter {
     }
     
     public static void mapAddScore(String name, float add){
-        Parameter p = parameterList.get(name);
-        p.addScore(add);
-        parameterList.put(name, p);
-        
+        if (name != null) {
+            Parameter p = parameterList.get(name);
+            p.addScore(add);
+            p.attempts++;
+            parameterList.put(name, p);
+
+        }
     }
     
     /**

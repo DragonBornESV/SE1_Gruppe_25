@@ -28,7 +28,7 @@ public class Game
                 "Yes, i do", "No, i don´t"};
         
         int[] rpMayor = new int[]{25,25};
-        Say dMayor1 = new Say("Hallo!\nI´m Mayor Mcclane and welcome to my city!\nSustainia doesn´t exceed our goal of creating a sustainiable city, so i need your help!"
+        Say dMayor1 = new Say("Hello " + Game.name+ "\nI´m Mayor Mcclane and welcome to my city!\nSustainia doesn´t exceed our goal of creating a sustainiable city, so i need your help!"
                 + "\n\nDo you know what sustainability means?", rMayor, rpMayor, parser);
         
         String[] rMayor2 = new String[]{
@@ -59,7 +59,7 @@ public class Game
                 "Ikke så meget... Du burde hellere bare lade være."};
         
         int[] rpBusDriver1 = new int[]{30,30};
-        Say dBusDriver1 = new Say("Hvad er bæredygtighed?", rBusDriver1, rpBusDriver1, parser);
+        Say dBusDriver1 = new Say("Hello!" + Game.name + "\nHvad er bæredygtighed?", rBusDriver1, rpBusDriver1, parser);
         
         String[] rBusDriver2 = new String[]{
                 "Du kan samle affald op, gå ind for "
@@ -371,8 +371,6 @@ public class Game
         while (! finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
-            
-            System.out.println(Parameter.mainScore.getAverage());
             
             if (mainScore.mainScore.getAverage() <= 0) {
                 System.out.println("You lost the game noob.");

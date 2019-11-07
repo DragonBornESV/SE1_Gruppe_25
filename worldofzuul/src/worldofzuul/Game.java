@@ -22,27 +22,29 @@ public class Game
         //and dialog are shortend to d.
         //MAYOR
         String[] rMayor = new String[]{
-                "Det er lort!", 
-                
-                "Det er godt"};
+                "Yes, i do", "No, i don´t"};
         
-        int[] rpMayor = new int[]{30,30};
-        Say dMayor1 = new Say("Hvad er bæredygtighed?", rMayor, rpMayor, parser);
+        int[] rpMayor = new int[]{25,25};
+        Say dMayor1 = new Say("Hallo!\nI´m Mayor Mcclane and welcome to my city!\nSustainia doesn´t exceed our goal of creating a sustainiable city, so i need your help!"
+                + "\n\nDo you know what sustainability means?", rMayor, rpMayor, parser);
         
         String[] rMayor2 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "Yes, i will", "No, i dont care"};
         
         int[] rpMayor2 = new int[]{30,0};
-        Say dMayor2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
+        Say dMayor2 = new Say("You have to walk around Sustainia and visit the different sights.\nTalk to the people that you meet and learn more about the city and sustainiability."
+                + "\n\nDo you want to help me make Sustainia sustainiable?\nand learn more about sustainiability?"
                 + "", rMayor2, rpMayor2, parser);
+        
+        String[] rMayor3 = new String[]{
+                "Ok..."};
+        
+        int[] rpMayor3 = new int[]{0};
+        Say dMayor3 = new Say("Then you are of no use for our city. Goodbye!", rMayor3, rpMayor3, parser);
         
         //We take all the dialog and use when calling the constructor of the 
         //NPC class. 
-        NPC mayorNpc = new NPC("the Mayor",new Say[]{dMayor1,dMayor2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
-                + " prøver det der!");
+        NPC mayorNpc = new NPC("The Mayor",new Say[]{dMayor1,dMayor2,dMayor3},"Alright " + Game.name + "!\nLet´s get started!","City Security",10);
         
         //New NPC - Build in the same way as above^^   
         //BUSDRIVER
@@ -266,15 +268,15 @@ public class Game
          *  Rooms are also assigned an exit command.
          */
         
-        office = new Room("welcome to the Mayors Office! This building is the center of the city and where you start", mayorNpc);
-        street1 = new Room("standing on North Street. Infront of you are the library and behind you are the Mayors office");
-        street2 = new Room("standing on East Street outside the eastside entrance of the Mayors office. To your right are the gas station");
-        street3 = new Room("standing on South Street outside the main entrance of the Mayors office. Infront you are the supermarket");
-        street4 = new Room("standing on West Street outside the westside entrance of the Mayors office. To your left are the park");
-        corner1 = new Room("standing on the northeast corner and there are a busstop. Infront of you are the police station and to your right are the bank", busDriverNpc);
-        corner2 = new Room("standing on the southeast corner. To your right are your house and behind you are the school");
-        corner3 = new Room("standing on the southwest corner. Behind you are the clothing store and to your left are the old decaying building");
-        corner4 = new Room("standing on the northwest corner. To your left are the hospital and infront of you are the recycling station");
+        office = new Room("welcome to the Mayors Office!\nThis building is the center of the city and where you start", mayorNpc);
+        street1 = new Room("standing on North Street.\nInfront of you are the library and behind you are the Mayors office");
+        street2 = new Room("standing on East Street outside the eastside entrance of the Mayors office.\nTo your right are the gas station");
+        street3 = new Room("standing on South Street outside the main entrance of the Mayors office.\nInfront you are the supermarket");
+        street4 = new Room("standing on West Street outside the westside entrance of the Mayors office.\nTo your left are the park");
+        corner1 = new Room("standing on the northeast corner and there are a busstop.\nInfront of you are the police station and to your right are the bank", busDriverNpc);
+        corner2 = new Room("standing on the southeast corner.\nTo your right are your house and behind you are the school");
+        corner3 = new Room("standing on the southwest corner.\nBehind you are the clothing store and to your left are the old decaying building");
+        corner4 = new Room("standing on the northwest corner.\nTo your left are the hospital and infront of you are the recycling station");
         nonsustainableHouse = new Room("in your house which are nonsustainable");
         policeStation = new Room("at the police station", officerNpc);
         bank = new Room("in the bank", bankManagerNpc);
@@ -444,7 +446,7 @@ public class Game
         if (name == null) {
             if (command.hasSecondWord()) {
                 name = command.getSecondWord();
-                System.out.println("Hello " + name);
+                System.out.println("\nHello " + name);
                 
                 createRooms();
                 

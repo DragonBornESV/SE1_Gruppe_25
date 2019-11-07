@@ -27,7 +27,7 @@ public class Inventory {
 // Aluminum Can
     Material[] aluminumCanMaterialArray = {aluminum};
     int[] aluminumCanMaterialcountArray = {1};
-    Item aluminumCan   = new Item("Aluminum Can ", aluminumCanMaterialArray, aluminumCanMaterialcountArray, 0);    
+    Item aluminumCan   = new Item("AluminumCan", aluminumCanMaterialArray, aluminumCanMaterialcountArray, 0);    
 // Axe
     Material[] axeMaterialArray = {iron, aluminum};
     int[] axeMaterialcountArray = {56, 6};
@@ -72,8 +72,6 @@ public class Inventory {
     
     Item[] itemsArray = {aluminumCan, axe, cardboardBox, clothes, computer, glassBottle, ironCan, organicWaste, plasticBottle, tire};
     
-    int pickUpItem = 3;
-    
     
     public Inventory(){
         updateInventory();
@@ -93,22 +91,60 @@ public class Inventory {
         }
         carrying = temp/10;
         money = temp2;
-        if (pickUpItem == 1) {
-            System.out.println("Pick Up");
-        } else if (pickUpItem == 2) {
-            System.out.println("Put away");
-        } else {
-            System.out.println("do nothing");
-        }
+        
     }
     
     
-    //public void pickUpItem() {
+    public void pickUpItem(String itemName, Room currentRoom) {
+        int index;
         
-   // }
+        //We find the index number for the item entered with the command.
+        for (int i = 0; i < itemsArray.length; i++) {
+            //We check if the name is valid with the item with the index
+            if (itemsArray[i].name.equals(itemName)) {
+                index = i;  //Saves the index if the name is valid
+                //Checks if there is any items to pick up?
+                if (currentRoom.getItemsInRoom()[index] > 0) {
+                    itemsArray[index].count++;  //Adds the item to your inventory
+                    currentRoom.getItemsInRoom()[index]--; //Removes one item from the room.
+                    System.out.println("You picked up " + itemsArray[index].name);
+                    
+                    updateInventory();
+                    return;
+                } else {
+                    System.out.println("You don't have that item on you.");
+                }
+            }
+        }
+        System.out.println("We can't indentify the item name...");
+    }
+    
+    public void dropItem(String itemName, Room currentRoom) {
+        int index;
+        
+        //We find the index number for the item entered with the command.
+        for (int i = 0; i < itemsArray.length; i++) {
+            //Checks if the name is valid
+            if (itemsArray[i].name.equals(itemName)) {
+                index = i;  //Saves the index
+                //Checks if there is an items in the inventory to drop
+                if (itemsArray[index].count > 0) {
+                    itemsArray[index].count--;  //Removes the item to your inventory
+                    currentRoom.getItemsInRoom()[index]++; //Adds the item to the room.
+                    System.out.println("You dropped " + itemsArray[index].name);
+                    
+                    updateInventory();
+                    return;
+                } else {
+                    System.out.println("You don't have that item on you.");
+                }
+            }
+        }
+        System.out.println("We can't indentify the item name...");
+    }
     
     
-// This loop prints all the items the player has (If the player has 0 of an item, it isn't printed).    
+    // This loop prints all the items the player has (If the player has 0 of an item, it isn't printed).    
     public void printItems() {
         System.out.println("┌------------------┬-----------┬-----------┐");
         System.out.println("│  ITEM            │    COUNT  │   WEIGHT  │");

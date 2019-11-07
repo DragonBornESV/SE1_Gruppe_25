@@ -117,12 +117,18 @@ public class Parameter {
         }
     }
     
-    public float getAverage(){
-        return (this.score/this.attempts)*100;      
+    public float getMainAverage(){
+        float value = 0;
+        
+        for (Map.Entry<String, Parameter> entry : parameterList.entrySet()){
+            value += entry.getValue().getScore();
+        }   
+        
+        return value/parameterList.size();
     }
     
-    public void setAverage(float average){
-        this.average = average;
+    public float getAverage(){
+        return (this.getScore()/this.attempts)*100;
     }
     
     /**
@@ -130,20 +136,13 @@ public class Parameter {
     * printScore() also creates a mainScore object to show the main score of the game.
     */
     public static void printScore(){ //viser progressbar for Main Score/Parameter
-        float value = 0;
         System.out.println("|-------------------------------------------------|");
         
         for (Map.Entry<String, Parameter> entry : parameterList.entrySet()){
             System.out.println(entry.getKey() + ":   \t\t" + entry.getValue().progressBar() + " " + Math.round(entry.getValue().getAverage()) + "%");
         }
         
-        for (Map.Entry<String, Parameter> entry : parameterList.entrySet()){
-            value += entry.getValue().getAverage();
-        }
-        
         System.out.println("|-------------------------------------------------|");
-        float main = value/7;
-        mainScore.setAverage(main);
-        System.out.println(mainScore.getName() + ":\t\t" + mainScore.progressBar() + " " + Math.round(main) + "%");
+        System.out.println(mainScore.getName() + ":\t\t" + mainScore.progressBar() + " " + Math.round(mainScore.getMainAverage()) + "%");
     }
 }

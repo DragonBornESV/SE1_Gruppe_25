@@ -368,9 +368,10 @@ public class Game
             Command command = parser.getCommand();
             finished = processCommand(command);
             
-            if (mainScore.mainScore.getAverage() <= 0) {
-                System.out.println("You lost the game noob.");
+            if (mainScore.mainScore.getMainAverage() <= 0) {
+
                 Parameter.printScore();
+                System.out.println("You lost the game noob.");
                 finished = true;
             }
             

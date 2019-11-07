@@ -1,5 +1,6 @@
 package worldofzuul;
 
+import static worldofzuul.Parameter.mainScore;
 import static worldofzuul.Parameter.parameterList;
 
 public class Game 
@@ -46,7 +47,8 @@ public class Game
         
         //We take all the dialog and use when calling the constructor of the 
         //NPC class. 
-        NPC mayorNpc = new NPC("The Mayor",new Say[]{dMayor1,dMayor2,dMayor3},"Alright " + Game.name + "!\nLet´s get started!","City Security",10);
+        NPC mayorNpc = new NPC("The Mayor",new Say[]{dMayor1,dMayor2,dMayor3},"Alright " 
+                + Game.name + "!\nLet´s get started!","City Security",-300);
         
         //New NPC - Build in the same way as above^^   
         //BUSDRIVER
@@ -370,13 +372,16 @@ public class Game
             Command command = parser.getCommand();
             finished = processCommand(command);
             
-            if (parameterList.get(name).getScore() <= 0) {
+            System.out.println(Parameter.mainScore.getAverage());
+            
+            if (mainScore.mainScore.getAverage() <= 0) {
                 System.out.println("You lost the game noob.");
                 Parameter.printScore();
                 finished = true;
+            }
+            
         }
         System.out.println("Thank you for playing.  Goodbye.");
-    }
     }
     
     private void printWelcome()

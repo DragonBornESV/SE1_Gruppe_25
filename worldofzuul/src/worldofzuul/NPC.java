@@ -82,7 +82,7 @@ public class NPC {
         if (!pointsGiven || parameterName != null) {
             Parameter.mapAddScore(parameterName, points);
             
-            System.out.println("You've gained " + points + "% in '" + parameterName + "'");
+            System.out.println("You've gained " + points + "% in '" + parameterName + "'!");
         }
         
         pointsGiven = true;     //After this the player can't get anymore points from this npc.

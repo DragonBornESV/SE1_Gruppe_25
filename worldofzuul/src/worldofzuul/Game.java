@@ -427,7 +427,7 @@ public class Game
         else if (commandWord == CommandWord.TALK) {
             if (currentRoom.hasNPC()) {
                 //Starts the conversation with the NPC
-                currentRoom.getNPC().runDialog(currentRoom.getNPC().npcName);
+                currentRoom.getNPC().runDialog(currentRoom.getNPC().getNpcName());
                 
             } else {
                 System.out.println("There is no one to talk to...");

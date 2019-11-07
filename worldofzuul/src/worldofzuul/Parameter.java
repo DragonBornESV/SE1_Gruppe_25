@@ -19,23 +19,20 @@ public class Parameter {
     private String name;
     private float score;
     public static Map<String, Parameter> parameterList = new HashMap<>();
-    private float attempts;
     private float average;
     public static Parameter mainScore = new Parameter();
     
     /**
      * 
      * @param name      The name of the parameter to value the game.
-     * attempts  The number of attempts that the user has taken.
      * score     The score that the user is valued from, and base value is set to 20.
      * average   The score converted to percentage as an average to display the score.
      */
     
     public Parameter(String name) {
     this.name = name;
-    this.attempts = 100;
     this.score = 20;
-    this.average = (score/attempts)*100;
+    this.average = (score/100)*100;
     parameterList.put(this.name, this);
     }
     public Parameter(){
@@ -53,7 +50,7 @@ public class Parameter {
     
     public void addScore(float add){
         this.score += add;
-        this.average = (score/attempts)*100;
+        this.average = (score/100)*100;
     }
     
     
@@ -77,10 +74,9 @@ public class Parameter {
         if (name != null) {
             Parameter p = parameterList.get(name);
             p.addScore(add);
-            p.attempts++;
             parameterList.put(name, p);
             
-            if (parameterList.get(name).getScore() >= 100) {
+            if (mainScore.getMainAverage() >= 100) {
                 System.out.println("Congratulations you won the game!");
                 Parameter.printScore();   
             }
@@ -128,7 +124,7 @@ public class Parameter {
     }
     
     public float getAverage(){
-        return (this.getScore()/this.attempts)*100;
+        return (this.getScore()/100)*100;
     }
     
     /**

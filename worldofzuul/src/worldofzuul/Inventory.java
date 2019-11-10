@@ -94,6 +94,23 @@ public class Inventory {
         
     }
     
+    public void searchForItems(Room currentRoom){
+        System.out.println("┌------------------┬-----------┬-----------┐");
+        System.out.println("│  ITEMS IN ROOM   │    COUNT  │   WEIGHT  │");
+        for (int i = 0; i < itemsArray.length; i++){
+            if (currentRoom.getItemsInRoom()[i] > 0){
+                System.out.println("├------------------┼-----------┼-----------┤");
+                System.out.print("│  ");
+                System.out.print(itemsArray[i].name);
+                System.out.print("  │  ");
+                System.out.printf("%7d", currentRoom.getItemsInRoom()[i]);
+                System.out.print("  │  ");
+                System.out.printf("%7.2f", itemsArray[i].weight);
+                System.out.println("  │");
+            }
+        }
+    }
+    
     
     public void pickUpItem(String itemName, Room currentRoom) {
         int index;

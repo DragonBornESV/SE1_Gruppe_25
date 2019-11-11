@@ -10,6 +10,7 @@ public class Room
     private String description;
     private HashMap<String, Room> exits;
     private NPC npc;
+    private int[] itemsInRoom = new int[10];
 
     public Room(String description) 
     {
@@ -21,6 +22,13 @@ public class Room
         this.description = description;
         this.npc = npc;
         exits = new HashMap<String, Room>();
+    }
+    
+    public Room(String description, int[] itemsInRoom) 
+    {
+        this.description = description;
+        exits = new HashMap<String, Room>();
+        this.itemsInRoom = itemsInRoom;
     }
 
     public void setExit(String direction, Room neighbor) 
@@ -71,5 +79,9 @@ public class Room
     public NPC getNPC() {
         return npc;
     }
+    
+    public int[] getItemsInRoom() {
+        return itemsInRoom;
+    }
+    
 }
-

@@ -5,6 +5,7 @@ public class Game
     private Parser parser;
     private Inventory inv;
     private Room currentRoom;
+    boolean adTheRecyclingStation = true;
         
 
     public Game() 
@@ -135,7 +136,11 @@ public class Game
             inv.dropItem(command.getSecondWord(), currentRoom);
         }
         else if (commandWord == CommandWord.SALVAGE) {
-            System.out.println("SALVAGE");
+            if (adTheRecyclingStation){
+                inv.salvageMaterials(command.getSecondWord());
+            }else{
+                System.out.println("To salvage, go to the recyclingstation");
+            }
         }
         else if (commandWord == CommandWord.PRINT) {
             if ("items".equals(command.getSecondWord())) {

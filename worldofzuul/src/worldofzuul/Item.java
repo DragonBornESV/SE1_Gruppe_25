@@ -17,6 +17,6 @@ public class Item {
         for (int j = 0; j < materialCount.length; j++){
              temp += materialCount[j];
         }
-        weight = temp;
+        weight = temp/10;
     }
 }

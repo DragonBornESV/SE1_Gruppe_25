@@ -19,16 +19,20 @@ public class Room
     }
     
     public Room(String description, NPC npc) {
-        this.description = description;
+        this(description);
         this.npc = npc;
-        exits = new HashMap<String, Room>();
     }
     
     public Room(String description, int[] itemsInRoom) 
     {
-        this.description = description;
-        exits = new HashMap<String, Room>();
+        this(description);
         this.itemsInRoom = itemsInRoom;
+    }
+    
+    public Room(String description, int[] itemsInRoom, NPC npc) 
+    {
+        this(description, itemsInRoom);
+        this.npc = npc;
     }
 
     public void setExit(String direction, Room neighbor) 

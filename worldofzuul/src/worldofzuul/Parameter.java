@@ -48,9 +48,9 @@ public class Parameter {
         this.name = "City Sustainability";
         this.average = 0;
 
-        /**
-         * this access method returns the name attribute
-         */
+    /**
+     * this access method returns the name attribute
+     */
     }
     public String getName(){
         return this.name;

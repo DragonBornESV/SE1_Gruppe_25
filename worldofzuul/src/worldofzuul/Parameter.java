@@ -28,6 +28,11 @@ public class Parameter {
      * score     The score that the user is valued from, and base value is set to 20.
      * average   The score converted to percentage as an average to display the score.
      */
+
+    /**This constructor is for the secondary parameters and sets the start value for each object made.
+     *
+     * @param name the name of the parameters
+     */
     
     public Parameter(String name) {
     this.name = name;
@@ -35,25 +40,40 @@ public class Parameter {
     this.average = (score/100)*100;
     parameterList.put(this.name, this);
     }
+
+    /** This constructor is for the Primary parameter, which reflects the overall score for all the secondary parameters.
+     *
+     */
     public Parameter(){
         this.name = "City Sustainability";
         this.average = 0;
-        
+
+    /**
+     * this access method returns the name attribute
+     */
     }
     public String getName(){
         return this.name;
     }
-    
+    /**
+     * this access method returns the score value attribute
+     */
     public float getScore(){
         return this.score;
     }
-    
+
+    /** The method is used to add to the current score and update the current average score.
+     *
+     * @param add is use to add to the score
+     */
     public void addScore(float add){
         this.score += add;
         this.average = (score/100)*100;
     }
-    
-    
+
+    /**
+     *  When this method is called it creates all secondary parameters.
+     */
     public static void createParameters(){
         Parameter p1 = new Parameter("City Equality");
         Parameter p2 = new Parameter("City Green Energy");
@@ -113,7 +133,11 @@ public class Parameter {
             return "[==========]";
         }
     }
-    
+
+    /**
+     * This method returns the average for the Primary parameter.
+     * @return  float value for the main/Primary parameter.
+     */
     public float getMainAverage(){
         float value = 0;
         
@@ -123,7 +147,11 @@ public class Parameter {
         
         return value/parameterList.size();
     }
-    
+
+    /**
+     * Method returns the current average for a secondary parameter.
+     * @return float value for secondary paramters.
+     */
     public float getAverage(){
         return (this.getScore()/100)*100;
     }
@@ -132,7 +160,7 @@ public class Parameter {
     * Prints out the score to the console and uses progressBar() to illustrate.
     * printScore() also creates a mainScore object to show the main score of the game.
     */
-    public static void printScore(){ //viser progressbar for Main Score/Parameter
+    public static void printScore(){
         System.out.println("|-------------------------------------------------|");
         
         for (Map.Entry<String, Parameter> entry : parameterList.entrySet()){

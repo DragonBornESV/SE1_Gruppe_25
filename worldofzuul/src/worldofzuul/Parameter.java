@@ -76,9 +76,10 @@ public class Parameter {
             p.addScore(add);
             parameterList.put(name, p);
             
-            if (mainScore.getMainAverage() >= 100) {
+            if (p.getScore() >= 100) {
                 System.out.println("Congratulations you won the game!");
-                Parameter.printScore();   
+                Parameter.printScore(); 
+                System.exit(0);
             }
         }
     }

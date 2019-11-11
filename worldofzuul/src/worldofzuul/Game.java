@@ -48,7 +48,7 @@ public class Game
         //We take all the dialog and use when calling the constructor of the 
         //NPC class. 
         NPC mayorNpc = new NPC("The Mayor",new Say[]{dMayor1,dMayor2,dMayor3},"Alright " 
-                + Game.name + "!\nLet´s get started!","City Security",30);
+                + Game.name + "!\nLet´s get started!","City Security",3000);
         
         //New NPC - Build in the same way as above^^   
         //BUSDRIVER

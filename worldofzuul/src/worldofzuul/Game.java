@@ -262,7 +262,7 @@ public class Game
         int[] parkItems = new int[]{0,0,0,0,0,0,25,70,50,0};
         int[] hospitalItems = new int[]{0,0,0,50,30,20,0,10,60,0};
         
-        office = new Room("welcome to the Mayors Office!\nThis building is the center of the city and where you start", mayorItems, mayorNpc);
+        office = new Room("at the Mayors Office!\nThis building is the center of the city and where you start", mayorItems, mayorNpc);
         street1 = new Room("standing on North Street.\nInfront of you are the library and behind you are the Mayors office");
         street2 = new Room("standing on East Street outside the eastside entrance of the Mayors office.\nTo your right are the gas station");
         street3 = new Room("standing on South Street outside the main entrance of the Mayors office.\nInfront you are the supermarket");

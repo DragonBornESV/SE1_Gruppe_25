@@ -493,7 +493,6 @@ public class Game
             inv.dropItem(command.getSecondWord(), currentRoom);
         }
         else if (commandWord == CommandWord.SALVAGE) {
-            inv.updateInventory();
             if (true) {     //INDSÆT HVOR DEN TJEKKER OM CURRENT ROOM = RECYCLING STATION
                 inv.salvageMaterials(command.getSecondWord());
             }else{
@@ -502,11 +501,9 @@ public class Game
         }
         else if (commandWord == CommandWord.PRINT) {
             if ("items".equals(command.getSecondWord())) {
-                inv.updateInventory();
                 inv.printItems();
             } 
             else if ("materials".equals(command.getSecondWord())) {
-                inv.updateInventory();
                 inv.printMaterials();
             }
             else if ("map".equals(command.getSecondWord())){

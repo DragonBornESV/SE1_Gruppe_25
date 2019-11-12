@@ -21,7 +21,6 @@ public class Game
 
     private void createRooms()
     {
-        
         //Setting up the NPC for the outside room
         //responses are shortend to r, responsesPoints are shortend to rp 
         //and dialog are shortend to d.
@@ -50,216 +49,196 @@ public class Game
         //We take all the dialog and use when calling the constructor of the 
         //NPC class. 
         NPC mayorNpc = new NPC("The Mayor",new Say[]{dMayor1,dMayor2,dMayor3},"Alright " 
-                + Game.name + "!\nLet´s get started!","City Security",3000);
+                + Game.name + "!\nLet´s get started!","City Security",30);
         
         //New NPC - Build in the same way as above^^   
         //BUSDRIVER
         String[] rBusDriver1 = new String[]{
-                "Car", "Bike", "Bus", };
+                "Car", "Bike", "Bus", "walk" };
         
-        int[] rpBusDriver1 = new int[]{0,25,25};
+        int[] rpBusDriver1 = new int[]{0,25,25,25};
         Say dBusDriver1 = new Say("Hello " + Game.name+ "!"
-                +"\nMy name is Bob "
+                +"\nMy name is Bob and i transport people around the city in my bus.\n How do you move around your city?"
                 + "", rBusDriver1, rpBusDriver1, parser);
         
         String[] rBusDriver2 = new String[]{
-                "", ""};
+                "Nothing. it doesn't hurt anyone with a little air pollution", "I don´t know", "We could all carpool!", 
+            "We could use the public transportation, ride our bikes or walk around in the city.\nIt would create less air pollution"};
         
-        int[] rpBusDriver2 = new int[]{30,30};
-        Say dBusDriver2 = new Say("", rBusDriver2, rpBusDriver2, parser);
+        int[] rpBusDriver2 = new int[]{0,0,0,30};
+        Say dBusDriver2 = new Say("We have a problem with to much air pollution in the city.\n What would do you think we should do about it?", rBusDriver2, rpBusDriver2, parser);
         
         NPC busDriverNpc = new NPC("The Bus driver",new Say[]{dBusDriver1,dBusDriver2},"Alright " 
-                + Game.name + "!\nLet´s get started!","City Green Energy",30);
+                + Game.name + "!\nLet´s get started!","City Clean Air",30);
         
         //OFFICER      
         String[] rOfficer1 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "", ""};
         int[] rpOfficer1 = new int[]{30,30};
-        Say dOfficer1 = new Say("Hvad er bæredygtighed?", rOfficer1, rpOfficer1, parser);
+        Say dOfficer1 = new Say("Hello " + Game.name+ "!"
+                +"\nMy name is Olivia and "
+                + "", rOfficer1, rpOfficer1, parser);
         
         String[] rOfficer2 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "", ""};
         int[] rpOfficer2 = new int[]{30,30};
-        Say dOfficer2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", rOfficer2, rpOfficer2, parser);
+        Say dOfficer2 = new Say("", rOfficer2, rpOfficer2, parser);
         
-        NPC officerNpc = new NPC("the officer",new Say[]{dOfficer1,dOfficer2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
-                + " prøver det der!");
-       
+        NPC officerNpc = new NPC("the officer",new Say[]{dOfficer1,dOfficer2},"Alright " 
+                + Game.name + "!\nLet´s get started!","City Security",30);
+        
         // BANK MANAGER
         String[] rBankManager1 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "", ""};
         int[] rpBankManager1 = new int[]{30,30};
-        Say dBankManager1 = new Say("Hvad er bæredygtighed?", rBankManager1, rpBankManager1, parser);
+        Say dBankManager1 = new Say("Hello " + Game.name+ "!"
+                +"\nMy name is Bryan "
+                + "", rBankManager1, rpBankManager1, parser);
         
         String[] rBankManager2 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "", ""};
         int[] rpBankManager2 = new int[]{30,30};
-        Say dBankManager2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", rBankManager2, rpBankManager2, parser);
+        Say dBankManager2 = new Say("", rBankManager2, rpBankManager2, parser);
         
-        NPC bankManagerNpc = new NPC("the officer",new Say[]{dBankManager1,dBankManager2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
-                + " prøver det der!");
-                
+        NPC bankManagerNpc = new NPC("the bank manager",new Say[]{dBankManager1,dBankManager2},"Alright " 
+                + Game.name + "!\nLet´s get started!","City Equality",30);
+  
         //TEACHER
         String[] rTeacher1 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "", ""};
         int[] rpTeacher1 = new int[]{30,30};
-        Say dTeacher1 = new Say("Hvad er bæredygtighed?", rTeacher1, rpTeacher1, parser);
+        Say dTeacher1 = new Say("Hello " + Game.name+ "!"
+                +"\nMy name is Tiffany"
+                + "", rTeacher1, rpTeacher1, parser);
         
         String[] rTeacher2 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "", ""};
         int[] rpTeacher2 = new int[]{30,30};
-        Say dTeacher2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", rTeacher2, rpTeacher2, parser);
+        Say dTeacher2 = new Say("", rTeacher2, rpTeacher2, parser);
         
-        NPC teacherNpc = new NPC("the officer",new Say[]{dTeacher1,dTeacher2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
-                + " prøver det der!");
-                
+        NPC teacherNpc = new NPC("the teacher",new Say[]{dTeacher1,dTeacher2},"Alright " 
+                + Game.name + "!\nLet´s get started!","City Equality",30);
+  
         //STORE CLERK
         String[] rStoreClerk1 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "", ""};
         int[] rpStoreClerk1 = new int[]{30,30};
-        Say dStoreClerk1 = new Say("Hvad er bæredygtighed?", rStoreClerk1, rpStoreClerk1, parser);
+        Say dStoreClerk1 = new Say("Hello " + Game.name+ "!"
+                +"\nMy name is Stella "
+                + "", rStoreClerk1, rpStoreClerk1, parser);
         
         String[] rStoreClerk2 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "", ""};
         int[] rpStoreClerk2 = new int[]{30,30};
-        Say dStoreClerk2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", rStoreClerk2, rpStoreClerk2, parser);
+        Say dStoreClerk2 = new Say("", rStoreClerk2, rpStoreClerk2, parser);
         
-        NPC storeClerkNpc = new NPC("the officer",new Say[]{dStoreClerk1,dStoreClerk2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
-                + " prøver det der!");
-                
+        NPC storeClerkNpc = new NPC("the store clerk",new Say[]{dStoreClerk1,dStoreClerk2},"Alright " 
+                + Game.name + "!\nLet´s get started!","City Security",30);
+         
+        /**("City Equality");
+        ("City Green Energy");
+        ("City Clean Water");
+        ("Sustainable Housing");
+        ("City Clean Air");
+        ("City Cleanliness");
+        ("City Security");*/
+        
         //TRASH CHILD
         String[] rTrashChild1 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "", ""};
         int[] rpTrashChild1 = new int[]{30,30};
-        Say dTrashChild1 = new Say("Hvad er bæredygtighed?", rTrashChild1, rpTrashChild1, parser);
+        Say dTrashChild1 = new Say("Hello " + Game.name+ "!"
+                +"\nMy name is Chad"
+                + "", rTrashChild1, rpTrashChild1, parser);
         
         String[] rTrashChild2 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "", ""};
         int[] rpTrashChild2 = new int[]{30,30};
-        Say dTrashChild2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", rStoreClerk2, rpStoreClerk2, parser);
+        Say dTrashChild2 = new Say("", rTrashChild2, rpTrashChild2, parser);
         
-        NPC trashChildNpc = new NPC("the officer",new Say[]{dTrashChild1,dTrashChild2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
-                + " prøver det der!");
-                
+        NPC trashChildNpc = new NPC("the child",new Say[]{dTrashChild1,dTrashChild2},"Alright " 
+                + Game.name + "!\nLet´s get started!","City Cleanliness",30);
+
         //NURSE
         String[] rNurse1 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "", ""};
         int[] rpNurse1 = new int[]{30,30};
-        Say dNurse1 = new Say("Hvad er bæredygtighed?", rNurse1, rpNurse1, parser);
+        Say dNurse1 = new Say("Hello " + Game.name+ "!"
+                +"\nMy name is Nancy"
+                + "", rNurse1, rpNurse1, parser);
         
         String[] rNurse2 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "", ""};
         int[] rpNurse2 = new int[]{30,30};
-        Say dNurse2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", rNurse2, rpNurse2, parser);
+        Say dNurse2 = new Say("", rNurse2, rpNurse2, parser);
         
-        NPC nurseNpc = new NPC("the officer",new Say[]{dNurse1,dNurse2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
-                + " prøver det der!");
-                
+        NPC nurseNpc = new NPC("the nurse",new Say[]{dNurse1,dNurse2},"Alright " 
+                + Game.name + "!\nLet´s get started!","City Security",30);
+         
+       /** ("City Equality");
+        ("City Green Energy");
+        ("City Clean Water");
+        ("Sustainable Housing");
+        ("City Clean Air");
+        ("City Cleanliness");
+        ("City Security");*/
+        
         //SANITATION WORKER
         String[] rSanitationWorker1 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "", ""};
         int[] rpSanitationWorker1 = new int[]{30,30};
-        Say dSanitationWorker1 = new Say("Hvad er bæredygtighed?", rSanitationWorker1, rpSanitationWorker1, parser);
+        Say dSanitationWorker1 = new Say("Hello " + Game.name+ "!"
+                +"\nMy name is Steve "
+                + "", rSanitationWorker1, rpSanitationWorker1, parser);
         
         String[] rSanitationWorker2 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "", ""};
         int[] rpSanitationWorker2 = new int[]{30,30};
-        Say dSanitationWorker2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", rSanitationWorker2, rpSanitationWorker2, parser);
+        Say dSanitationWorker2 = new Say("", rSanitationWorker2, rpSanitationWorker2, parser);
         
-        NPC sanitationWorkerNpc = new NPC("the officer",new Say[]{dSanitationWorker1,dSanitationWorker2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
-                + " prøver det der!");
-                        
+        NPC sanitationWorkerNpc = new NPC("the sanitation worker",new Say[]{dSanitationWorker1,dSanitationWorker2},"Alright " 
+                + Game.name + "!\nLet´s get started!","City Cleanliness",30);
+        
         //CASHIER
         String[] rCashier1 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "", ""};
         int[] rpCashier1 = new int[]{30,30};
-        Say dCashier1 = new Say("Hvad er bæredygtighed?", rCashier1, rpCashier1, parser);
+        Say dCashier1 = new Say("Hello " + Game.name+ "!"
+                +"\nMy name is Chloe "
+                + "", rCashier1, rpCashier1, parser);
         
         String[] rCashier2 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "", ""};
         int[] rpCashier2 = new int[]{30,30};
-        Say dCashier2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", rCashier2, rpCashier2, parser);
+        Say dCashier2 = new Say("", rCashier2, rpCashier2, parser);
         
-        NPC cashierNpc = new NPC("the officer",new Say[]{dCashier1,dCashier2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
-                + " prøver det der!");
-                        
+        NPC cashierNpc = new NPC("the cashier",new Say[]{dCashier1,dCashier2},"Alright " 
+                + Game.name + "!\nLet´s get started!","City Security",30);
+         
+ /**    ("City Equality");
+        ("City Green Energy");
+        ("City Clean Water");
+        ("Sustainable Housing");
+        ("City Clean Air");
+        ("City Cleanliness");
+        ("City Security");*/
+        
         //FACTORY WORKER
         String[] rFactoryWorker1 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "", ""};
         int[] rpFactoryWorker1 = new int[]{30,30};
-        Say dFactoryWorker1 = new Say("Hvad er bæredygtighed?", rFactoryWorker1, rpFactoryWorker1, parser);
+        Say dFactoryWorker1 = new Say("Hello " + Game.name+ "!"
+                +"\nMy name is Fred "
+                + "", rFactoryWorker1, rpFactoryWorker1, parser);
         
         String[] rFactoryWorker2 = new String[]{
-                "Du kan samle affald op, gå ind for "
-                + "bæredygtige materialer fra \n\tnærområdet. Der er en masse!", 
-            
-                "Ikke så meget... Du burde hellere bare lade være."};
+                "", ""};
         int[] rpFactoryWorker2 = new int[]{30,30};
-        Say dFactoryWorker2 = new Say("Ok, men hvad skal jeg gøre for at hjælpe til?"
-                + "", rFactoryWorker2, rpFactoryWorker2, parser);
+        Say dFactoryWorker2 = new Say("", rFactoryWorker2, rpFactoryWorker2, parser);
         
-        NPC factoryWorkerNpc = new NPC("the officer",new Say[]{dFactoryWorker1,dFactoryWorker2},"Arh, ved du hvad " + Game.name + "? Jeg tror jeg"
-                + " prøver det der!");
-        
+        NPC factoryWorkerNpc = new NPC("the factory worker",new Say[]{dFactoryWorker1,dFactoryWorker2},"Alright " 
+                + Game.name + "!\nLet´s get started!","City Green Energy",30);
+  
         Room office, street1, street2, street3, street4, corner1, corner2, 
                 corner3, corner4, nonsustainableHouse, policeStation, bank, clothingFactory, waterPlant, 
                 school, supermarket, clothingStore, oldDecayingBuilding, park, 
@@ -270,7 +249,18 @@ public class Game
          *  Rooms are also assigned an exit command.
          */
         
-        int[] mayorItems = new int[]{1,1,1,1,1,1,1,1,1,1};
+        int[] mayorItems = new int[]{0,0,0,0,2,0,0,0,0,0};
+        int[] houseItems = new int[]{5,1,4,40,1,5,10,40,100,4};
+        int[] policeItems = new int[]{0,1,0,5,8,0,0,0,50,40};
+        int[] bankItems = new int[]{0,0,0,0,10,0,0,0,30,0};
+        int[] factoryItems = new int[]{0,0,70,100,5,0,0,0,0,0};
+        int[] waterPlantItems = new int[]{0,0,0,0,3,0,0,0,10,0};
+        int[] schoolItems = new int[]{0,2,0,0,50,0,10,60,120,0};
+        int[] supermarketItems = new int[]{100,10,30,90,9,50,100,0,200,40};
+        int[] storeItems = new int[]{0,0,10,300,5,10,0,0,0,0};
+        int[] buildingItems = new int[]{100,5,0,10,0,0,30,20,40,20};
+        int[] parkItems = new int[]{0,0,0,0,0,0,25,70,50,0};
+        int[] hospitalItems = new int[]{0,0,0,50,30,20,0,10,60,0};
         
         office = new Room("welcome to the Mayors Office!\nThis building is the center of the city and where you start", mayorItems, mayorNpc);
         street1 = new Room("standing on North Street.\nInfront of you are the library and behind you are the Mayors office");
@@ -281,17 +271,17 @@ public class Game
         corner2 = new Room("standing on the southeast corner.\nTo your right are your house and behind you are the school");
         corner3 = new Room("standing on the southwest corner.\nBehind you are the clothing store and to your left are the old decaying building");
         corner4 = new Room("standing on the northwest corner.\nTo your left are the hospital and infront of you are the recycling station");
-        nonsustainableHouse = new Room("in your house which are nonsustainable");
-        policeStation = new Room("at the police station", officerNpc);
-        bank = new Room("in the bank", bankManagerNpc);
-        clothingFactory = new Room("at the clothing factory", factoryWorkerNpc);
-        waterPlant = new Room("at the water plant");
-        school = new Room("in the school", teacherNpc);
-        supermarket = new Room("in the supermarket", cashierNpc);
-        clothingStore = new Room("in the clothing store", storeClerkNpc);
-        oldDecayingBuilding = new Room("in an old decaying building");
-        park = new Room("in the park", trashChildNpc);
-        hospital = new Room("in the hospital", nurseNpc);
+        nonsustainableHouse = new Room("in your house which are nonsustainable", houseItems);
+        policeStation = new Room("at the police station",policeItems, officerNpc);
+        bank = new Room("in the bank",bankItems, bankManagerNpc);
+        clothingFactory = new Room("at the clothing factory",factoryItems, factoryWorkerNpc);
+        waterPlant = new Room("at the water plant", waterPlantItems);
+        school = new Room("in the school", schoolItems, teacherNpc);
+        supermarket = new Room("in the supermarket",supermarketItems, cashierNpc);
+        clothingStore = new Room("in the clothing store",storeItems, storeClerkNpc);
+        oldDecayingBuilding = new Room("in an old decaying building", buildingItems);
+        park = new Room("in the park",parkItems, trashChildNpc);
+        hospital = new Room("in the hospital",hospitalItems, nurseNpc);
         recyclingStation = new Room("at the recycling station", sanitationWorkerNpc);
         
         office.setExit("east", street2);
@@ -433,7 +423,10 @@ public class Game
         System.out.println("Welcome to the City of Sustainia!");
         System.out.println("Sustainia is a new, incredibly awesome adventure game.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
-        System.out.println();
+        System.out.println("");
+        System.out.println("The once great city of Sustainia, does no longer live up to its name,\n"
+                +"and so the Mayer has tasked you with getting the city back on its feet, and teaching the citizens of Sustainia to once again be Sustainable.");
+        System.out.println("");
         System.out.println("Please enter your name by writing '" + CommandWord.NAME + "' + your name");
     }
 

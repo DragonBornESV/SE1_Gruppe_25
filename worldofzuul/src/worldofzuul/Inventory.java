@@ -124,14 +124,17 @@ public class Inventory {
                 index = i;  //Saves the index if the name is valid
                 //Checks if there is any items to pick up?
                 if (currentRoom.getItemsInRoom()[index] > 0) {
-                    itemsArray[index].count++;  //Adds the item to your inventory
-                    currentRoom.getItemsInRoom()[index]--; //Removes one item from the room.
-                    System.out.println("You picked up " + itemsArray[index].name);
-                    
-                    updateInventory();
-                    return;
+                    if (currentRoom.getItemsInRoom()[index] + carrying < carryingCapacity) {
+                        itemsArray[index].count++;  //Adds the item to your inventory
+                        currentRoom.getItemsInRoom()[index]--; //Removes one item from the room.
+                        System.out.println("You picked up " + itemsArray[index].name);
+                        updateInventory();
+                        return;
+                    } else {
+                        System.out.println("You can't carry anymore.");
+                    }
                 } else {
-                    System.out.println("You don't have that item on you.");
+                    System.out.println("You can't pick up that item.");
                     System.out.println(" "); 
                 }
             }

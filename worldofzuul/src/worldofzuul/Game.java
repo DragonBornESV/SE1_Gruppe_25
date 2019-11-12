@@ -196,7 +196,7 @@ public class Game
         int[] rpSanitationWorker2 = new int[]{30,30};
         Say dSanitationWorker2 = new Say("", rSanitationWorker2, rpSanitationWorker2, parser);
         
-        NPC sanitationWorkerNpc = new NPC("the officer",new Say[]{dSanitationWorker1,dSanitationWorker2},"Alright " 
+        NPC sanitationWorkerNpc = new NPC("the sanitation worker",new Say[]{dSanitationWorker1,dSanitationWorker2},"Alright " 
                 + Game.name + "!\nLet´s get started!","City Cleanliness",30);
         
         //CASHIER

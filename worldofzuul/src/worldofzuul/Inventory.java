@@ -89,7 +89,7 @@ public class Inventory {
         for (int j = 0; j < materialArray.length; j++){
             temp2 += materialArray[j].value*materialArray[j].count;
         }
-        carrying = temp/10;
+        carrying = temp;
         money = temp2;
         
     }

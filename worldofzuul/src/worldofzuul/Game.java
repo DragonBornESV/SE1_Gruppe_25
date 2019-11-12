@@ -485,9 +485,11 @@ public class Game
             Parameter.printScore();
         }
         else if (commandWord == CommandWord.PICKUP) {
+            inv.updateInventory();
             inv.pickUpItem(command.getSecondWord(), currentRoom);
         }
         else if (commandWord == CommandWord.DROP) {
+            inv.updateInventory();
             inv.dropItem(command.getSecondWord(), currentRoom);
         }
         else if (commandWord == CommandWord.SALVAGE) {

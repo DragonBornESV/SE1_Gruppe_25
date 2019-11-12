@@ -89,7 +89,7 @@ public class Inventory {
         for (int j = 0; j < materialArray.length; j++){
             temp2 += materialArray[j].value*materialArray[j].count;
         }
-        carrying = temp/10;
+        carrying = temp;
         money = temp2;
         
     }
@@ -116,7 +116,7 @@ public class Inventory {
     
     public void pickUpItem(String itemName, Room currentRoom) {
         int index;
-        
+        updateInventory();
         //We find the index number for the item entered with the command.
         for (int i = 0; i < itemsArray.length; i++) {
             //We check if the name is valid with the item with the index
@@ -142,7 +142,7 @@ public class Inventory {
     
     public void dropItem(String itemName, Room currentRoom) {
         int index;
-        
+        updateInventory();
         //We find the index number for the item entered with the command.
         for (int i = 0; i < itemsArray.length; i++) {
             //Checks if the name is valid
@@ -223,7 +223,7 @@ public class Inventory {
     }
     public void salvageMaterials(String itemName){
         int index;
-        
+        updateInventory();
         //We find the index number for the item entered with the command.
         for (int i = 0; i < itemsArray.length; i++) {
             //Checks if the name is valid

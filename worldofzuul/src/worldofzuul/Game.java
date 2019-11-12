@@ -148,7 +148,7 @@ public class Game
                 "", ""};
         int[] rpTrashChild1 = new int[]{30,30};
         Say dTrashChild1 = new Say("Hello " + Game.name+ "!"
-                +"\nMy name is Chad"
+                +"\nSup dude I'm Chad!"
                 + "", rTrashChild1, rpTrashChild1, parser);
         
         String[] rTrashChild2 = new String[]{
@@ -213,7 +213,7 @@ public class Game
         Say dCashier2 = new Say("", rCashier2, rpCashier2, parser);
         
         NPC cashierNpc = new NPC("the cashier",new Say[]{dCashier1,dCashier2},"Alright " 
-                + Game.name + "!\nLet´s get started!","City Security",30);
+                + Game.name + "!\nLet´s get started!","City Security",-3000);
          
  /**    ("City Equality");
         ("City Green Energy");
@@ -425,7 +425,7 @@ public class Game
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println("");
         System.out.println("The once great city of Sustainia, does no longer live up to its name,\n"
-                +"and so the Mayer has tasked you with getting the city back on its feet,\n"
+                +"and so the Mayor has tasked you with getting the city back on its feet,\n"
                 +"and teaching the citizens of Sustainia to once again be Sustainable.");
         System.out.println("");
         System.out.println("Please enter your name by writing '" + CommandWord.NAME + "' + your name");

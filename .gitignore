@@ -25,3 +25,5 @@ hs_err_pid*
 /worldofzuul/build/
 /worldofzuul/dist/
 
+worldofzuul/nbproject/build-impl.xml
+worldofzuul/nbproject/genfiles.properties

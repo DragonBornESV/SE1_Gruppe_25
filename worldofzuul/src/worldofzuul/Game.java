@@ -506,7 +506,8 @@ public class Game
             }
             else if ("map".equals(command.getSecondWord())){
                 printMap();
-            }else {
+            } 
+            else {
                 System.out.println("Remember to type materials, items or "
                         + "parameters when using this command...");
             }  
@@ -569,7 +570,8 @@ public class Game
     }
 
     public void printMap(){
-        System.out.println("                     _______________________     _______________________     _______________________\n" +
+        System.out.println(
+"                     _______________________     _______________________     _______________________\n" +
 "                    |                       |   |                       |   |                       |\n" +
 "                    |   Recycling Station   |   | Non-sustainable House |   |    Police Station     |\n" +
 "                    |___   __               |   |                       |   |_________// \\\\_________|\n" +

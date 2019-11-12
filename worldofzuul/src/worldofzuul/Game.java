@@ -423,7 +423,10 @@ public class Game
         System.out.println("Welcome to the City of Sustainia!");
         System.out.println("Sustainia is a new, incredibly awesome adventure game.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
-        System.out.println();
+        System.out.println("");
+        System.out.println("The once great city of Sustainia, does no longer live up to its name,\n"
+                +"and so the Mayer has tasked you with getting the city back on its feet, and teaching the citizens of Sustainia to once again be Sustainable.");
+        System.out.println("");
         System.out.println("Please enter your name by writing '" + CommandWord.NAME + "' + your name");
     }
 

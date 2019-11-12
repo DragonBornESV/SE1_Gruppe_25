@@ -1,0 +1,1 @@
+"C:\Program Files\Java\jdk-12.0.2\bin\java" -jar "C:\Users\marti\Google Drev\SDU\SDU 1. semester\Semesterprojekt - Udvikling af Softwareprogrammer\SE1_Gruppe_25\worldofzuul\dist\worldofzuul.jar"

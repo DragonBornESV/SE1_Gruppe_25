@@ -106,7 +106,8 @@ public class Inventory {
         System.out.println("┌------------------┬-----------┬-----------┐");
         System.out.println("│   ITEMS IN ROOM  │    COUNT  │   WEIGHT  │");
         
- // The for loop loops through the itemsArray[] and if the count value of an item in the current room is above 0, the item iss printed.        for (int i = 0; i < itemsArray.length; i++){                
+ // The for loop loops through the itemsArray[] and if the count value of an item in the current room is above 0, the item iss printed.
+ for (int i = 0; i < itemsArray.length; i++){                
             if (currentRoom.getItemsInRoom()[i] > 0){
                 System.out.println("├------------------┼-----------┼-----------┤");
                 System.out.print("│  ");

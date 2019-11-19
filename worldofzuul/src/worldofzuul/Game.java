@@ -48,7 +48,7 @@ public class Game
         //We take all the dialog and use when calling the constructor of the 
         //NPC class. 
         NPC mayorNpc = new NPC("The Mayor",new Say[]{dMayor1,dMayor2,dMayor3},"Alright " 
-                + Game.name + "!\nLet´s get started!","City Security",30);
+                + Game.name + "!\nLet´s get started!","City Security",-300);
         
         //New NPC - Build in the same way as above^^   
         //BUSDRIVER
@@ -382,7 +382,7 @@ public class Game
             Command command = parser.getCommand();
             finished = processCommand(command);
             
-            if (mainScore.mainScore.getMainAverage() <= 0) {
+            if (mainScore.mainScore.getMainAverage() == 0) {
 
                 Parameter.printScore();
                 System.out.println("You lost the game noob.");

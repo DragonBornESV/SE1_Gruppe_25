@@ -1,5 +1,10 @@
 package worldofzuul;
-
+/* 
+ * This class creates our objekt material, 
+ * which consists of a name in form of a string, 
+ * a value in form of a double, the weight as a double 
+ * and the amount(count) of materials as an integer.
+ */
 public class Material {
     String name = "Name";
     double value = 0;

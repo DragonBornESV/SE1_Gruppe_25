@@ -1,16 +1,13 @@
 package worldofzuul;
 
 public class Inventory {
+    // We create variables for our starting inventory stats.
+    double money = 0;           // The amount of money the player is carrying.
+    double carrying = 0;        // The current weight the player is carrying.
+    int carryingCapacity = 100; // The total amount of weight the player is able to carry.
+
     
-    double money = 0;
-    double carrying = 0;
-    int carryingCapacity = 100;
-    int[] roomItems = new int[2];
-    
-    int[] currentRoomItems = {0,3};
-    
-//Here the materials are constructed. In the following order given a name, value, weight and quantity.
- 
+// Here the materials are constructed. In the following order given a name, value, weight and quantity.
     Material aluminum = new Material("Aluminum", 0.81, 0.1, 0);
     Material cloth    = new Material("Cloth   ", 2.10, 0.1, 0);
     Material compost  = new Material("Compost ", 0.37, 0.1, 0);
@@ -23,7 +20,7 @@ public class Inventory {
     Material plastic  = new Material("Plastic ", 2.10, 0.1, 0);
     Material rubber   = new Material("Rubber  ", 1.00, 0.1, 0);
     
-
+// Here the items are constructed using the item datatype.
 // Aluminum Can
     Material[] aluminumCanMaterialArray = {aluminum};
     int[] aluminumCanMaterialcountArray = {1};
@@ -66,38 +63,51 @@ public class Inventory {
     Item tire          = new Item("Tire", tireMaterialArray, tireMaterialcountArray, 0);
 
     
-
 // An array is created, which contains one of each material. it is used to print the materials.
     Material[] materialArray = {aluminum, cloth, compost, concrete, copper, glass, iron, paper, oakWood, plastic, rubber}; 
     
+// An array is created, which contains one of each item. it is used to print the items.    
     Item[] itemsArray = {aluminumCan, axe, cardboardBox, clothes, computer, glassBottle, ironCan, organicWaste, plasticBottle, tire};
+ 
     
-    
+// This method is called when creating a new inventory in the class Game. 
     public Inventory(){
         updateInventory();
     }
     
    
-// 
-    public void updateInventory() {
-        roomItems = currentRoomItems;
-        double temp = 0;
-        double temp2 = 0;
-        for (int i = 0; i < itemsArray.length; i++){
+/* 
+ * The method updateInventory() is used to update the money value and the carry value.
+ * The method is called whenever an item is removed or placed in the inventory
+ */  
+  public void updateInventory() {
+        double temp = 0;         // The first temporary variable is used to calculate the amount of weight the player is carrying.
+        double temp2 = 0;        // The second temporary variable is used to calculate the total material value the player is carrying.
+      
+  // This for loop loops through the item array and takes the weight value and multiplies it with the item count value.      
+      for (int i = 0; i < itemsArray.length; i++){                
             temp += itemsArray[i].weight*itemsArray[i].count;
         }
-        for (int j = 0; j < materialArray.length; j++){
+ // This for loop loops through the material array and takes the value of each material and multiplies it with the material count value.
+      for (int j = 0; j < materialArray.length; j++){
             temp2 += materialArray[j].value*materialArray[j].count;
         }
         carrying = temp;
         money = temp2;
         
     }
+
     
+/* 
+ * This method is called when the user search command is used.
+ * The method prints out a table of the names, count and weight of all the items in the current room.
+ */
     public void searchForItems(Room currentRoom){
         System.out.println("┌------------------┬-----------┬-----------┐");
         System.out.println("│   ITEMS IN ROOM  │    COUNT  │   WEIGHT  │");
-        for (int i = 0; i < itemsArray.length; i++){
+        
+ // The for loop loops through the itemsArray[] and if the count value of an item in the current room is above 0, the item iss printed.
+ for (int i = 0; i < itemsArray.length; i++){                
             if (currentRoom.getItemsInRoom()[i] > 0){
                 System.out.println("├------------------┼-----------┼-----------┤");
                 System.out.print("│  ");
@@ -113,9 +123,13 @@ public class Inventory {
         System.out.println(" "); 
     }
     
-    
+
+/*
+ * This method is called when the user pickup <itemName> command is used.
+ * If you have enough room in your inventory, and the selected item is in the room you can pick it up.
+ */
     public void pickUpItem(String itemName, Room currentRoom) {
-        int index;
+        int index; //This is a temporary variable used to search through the currentRoom.getItemsInRoom()[] array.
         updateInventory();
         //We find the index number for the item entered with the command.
         for (int i = 0; i < itemsArray.length; i++) {
@@ -142,7 +156,12 @@ public class Inventory {
         System.out.println("We can't indentify the item name...");
         System.out.println(" "); 
     }
-    
+
+
+/*
+ * This method is called when the user drop <itemName> command is used.
+ * If you have the selected item in your inventory you can drop it and it gets added to the rooms currentRoom.getItemsInRoom()[] array.
+ */
     public void dropItem(String itemName, Room currentRoom) {
         int index;
         updateInventory();
@@ -156,7 +175,6 @@ public class Inventory {
                     itemsArray[index].count--;  //Removes the item to your inventory
                     currentRoom.getItemsInRoom()[index]++; //Adds the item to the room.
                     System.out.println("You dropped " + itemsArray[index].name);
-                    
                     updateInventory();
                     return;
                 } else {
@@ -170,7 +188,10 @@ public class Inventory {
     }
     
     
-    // This loop prints all the items the player has (If the player has 0 of an item, it isn't printed).    
+/* 
+ * This method is called when the user print items command is used.    
+ * This loop prints all the items the player has (If the player has 0 of an item, it isn't printed).
+ */
     public void printItems() {
         System.out.println("┌------------------┬-----------┬-----------┐");
         System.out.println("│            ITEM  │    COUNT  │   WEIGHT  │");
@@ -202,7 +223,11 @@ public class Inventory {
         System.out.println(" "); 
         }
     
-    // This loop prints all the materials the player has (even if the player has 0 of a material).
+
+/*
+ * This method is called when the user print materials command is used.
+ * This loop prints all the materials the player has (even if the player has 0 of a material).
+ */
     public void printMaterials(){
         System.out.println("┌------------┬-----------┬-------------┬-------------┐");
         System.out.println("│  MATERIAL  │   COUNT   │    WEIGHT   │    VALUE    │");
@@ -224,6 +249,12 @@ public class Inventory {
         System.out.println("└------------┴-----------┴-------------┴-------------┘");
         System.out.println(" ");
     }
+
+
+/*
+ * This method is called when the user salvage <itemName> command is used.
+ * The selected item is removed from the inventory and the materials the item consists of is added to the inventory.
+ */
     public void salvageMaterials(String itemName){
         int index;
         updateInventory();

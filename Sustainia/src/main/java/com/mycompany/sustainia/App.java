@@ -42,6 +42,7 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
     World wo = new World();
+    HitBox testBox = new HitBox(546*4, 527*4, 32*4, 22*4);
   //  Collision col = new Collision(wo);
     
     int cW = 320;
@@ -54,22 +55,25 @@ public class App extends Application {
     int facing = 0;
     int at = 0;
     private ImageView street;
+    private ImageView streetTop;
     private ImageView character;
     
     @Override
     public void start(Stage stage) throws FileNotFoundException {
         // Creates a new image, from the selected parth on computer
         FileInputStream inputStreets = new FileInputStream("img\\street.png");
-        Image streetsImage = new Image(inputStreets,11200,7700,true,false);
+        Image streetsImage = new Image(inputStreets,1120*4,770*4,true,false);
         FileInputStream inputCharacter = new FileInputStream("img\\ch.png");
         Image characterImage = new Image(inputCharacter,1280,1280,true,false);
-        
+        FileInputStream inputStreetsTop = new FileInputStream("img\\street_top.png");
+        Image streetsTopImage = new Image(inputStreetsTop,1120*4,770*4,true,false);
         
         
         //Setting the image view
         this.street = new ImageView(streetsImage);
         this.character = new ImageView(characterImage);
         character.setViewport(new Rectangle2D(0, 0, cW, cH));
+        this.streetTop = new ImageView(streetsTopImage);
         
         //Setting the position of the image 
         this.street.setX(wo.gameX);
@@ -78,6 +82,9 @@ public class App extends Application {
         this.character.setX(wo.characterX);
         this.character.setY(wo.characterY);
         
+        this.streetTop.setX(wo.gameX);
+        this.streetTop.setY(wo.gameY);
+        
         //setting the fit height and width of the image view 
         this.street.setFitWidth(1120*4);
         this.street.setFitHeight(770*4);
@@ -85,12 +92,16 @@ public class App extends Application {
         this.character.setFitWidth(cW*0.1*4);
         this.character.setFitHeight(cH*0.1*4);
         
+        this.streetTop.setFitWidth(1120*4);
+        this.streetTop.setFitHeight(770*4);
+        
         //Setting the preserve ratio of the image view 
         this.street.setPreserveRatio(true);
         this.character.setPreserveRatio(true);
+        this.streetTop.setPreserveRatio(true);
         
         //Creating a Group object  
-        Group root = new Group(this.street, this.character);
+        Group root = new Group(this.street, this.character, this.streetTop);
         
         //Creating a scene object 
         Scene scene = new Scene(root, wo.gameScreenWidth, wo.gameScreenHeight);
@@ -144,8 +155,6 @@ public class App extends Application {
                 
                 moveCharacter(moving, goNorth, goSouth, goEast, goWest, dx, dy, at, facing);
                 
-                //col.collisionDetection();
-                //col.collisionInStreets();
             }
         };
         
@@ -153,13 +162,19 @@ public class App extends Application {
     }
     
     private void moveCharacter (boolean moving, boolean goNorth, boolean goSouth, boolean goEast, boolean goWest, int dx, int dy, int at, int facing){
+        
+        dx = testBox.collisionDetectionX(dx);
+        dy = testBox.collisionDetectionY(dy);
+        
         wo.gameX += dx;
         wo.gameY += dy;
         
         this.street.setX(wo.gameX);
         this.street.setY(wo.gameY);
+        this.streetTop.setX(wo.gameX);
+        this.streetTop.setY(wo.gameY);
         
-        
+        testBox.collisionWithObject(wo.gameX, wo.gameY);
         
         // character_animation
         if (moving) {
@@ -191,6 +206,7 @@ public class App extends Application {
         }
         
     }
+    
     
 
     public static void runApp(String[] args) {

@@ -65,6 +65,10 @@ public class Parameter {
     public float getScore() {
         return this.score;
     }
+    
+    private void setScore(float num) {
+        this.score = num;
+    }
 
     /**
      * The method is used to add to the current score and update the current
@@ -101,9 +105,15 @@ public class Parameter {
         if (name != null) {
             Parameter p = parameterList.get(name);
             p.addScore(add);
+            if (p.getScore() > 100){
+                p.setScore(100);
+            }
+            if (p.getScore() < 0) {
+                p.setScore(0);
+            }
             parameterList.put(name, p);
 
-            if (p.getScore() >= 100) {
+            if (p.getScore() == 100) {
                 System.out.println("Congratulations you won the game!");
                 Parameter.printScore();
                 System.exit(0);

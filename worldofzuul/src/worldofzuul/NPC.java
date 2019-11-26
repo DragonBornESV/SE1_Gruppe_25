@@ -40,6 +40,14 @@ public class NPC {
         this.dialog = dialog;
         this.endTriggerMessage = endTriggerMessage;
     }
+
+    NPC(String the_factory_worker, Say[] say, String string, String city_Green_Energy, int i, String city_Clean_Water, int i0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    NPC(String the_factory_worker, Say[] say, String string, String city_Green_Energy, int i, String city_Clean_Water, int i0, String city_Clean_Air, int i1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     /**Initiates the dialog with the NPC.
      * 

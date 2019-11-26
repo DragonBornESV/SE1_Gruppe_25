@@ -53,10 +53,11 @@ public class App extends Application {
     boolean goWest  = false;
     boolean moving  = false;
     int facing = 0;
-    int at = 0;
+    int animationTimer = 0;
     private ImageView street;
     private ImageView streetTop;
     private ImageView character;
+    
     
     @Override
     public void start(Stage stage) throws FileNotFoundException {
@@ -111,10 +112,10 @@ public class App extends Application {
             @Override
             public void handle(KeyEvent e) {
                 switch(e.getCode()){
-                    case UP:    goNorth = true; break;
-                    case DOWN:  goSouth = true; break;
-                    case RIGHT: goEast  = true; break;
-                    case LEFT:  goWest  = true; break;
+                    case W: goNorth = true; break;
+                    case S: goSouth = true; break;
+                    case D: goEast  = true; break;
+                    case A: goWest  = true; break;
                 }
             }
         });
@@ -124,10 +125,10 @@ public class App extends Application {
             @Override
             public void handle(KeyEvent e) {
                 switch(e.getCode()){
-                    case UP:    goNorth = false; break;
-                    case DOWN:  goSouth = false; break;
-                    case RIGHT: goEast  = false; break;
-                    case LEFT:  goWest  = false; break;
+                    case W: goNorth = false; break;
+                    case S: goSouth = false; break;
+                    case D: goEast  = false; break;
+                    case A:  goWest  = false; break;
                 }
             }
         });
@@ -140,25 +141,29 @@ public class App extends Application {
         //Displaying the contents of the stage
         stage.show();
         
+        characterAnimation();
+    }
+    
+    private void characterAnimation() {
         AnimationTimer timer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                int dx = 0, dy = 0;
-                
-                if      (goNorth) {dy += wo.characterMovementSpeedV; facing = 0; moving = true;}
-                else if (goSouth) {dy -= wo.characterMovementSpeedV; facing = 1; moving = true;}
-                else if (goEast)  {dx -= wo.characterMovementSpeedH; facing = 2; moving = true;}
-                else if (goWest)  {dx += wo.characterMovementSpeedH; facing = 3; moving = true;}
-                else    { moving = false;}
-                
-                if (moving) at ++;
-                
-                moveCharacter(moving, goNorth, goSouth, goEast, goWest, dx, dy, at, facing);
-                
-            }
-        };
-        
-        timer.start();
+                @Override
+                public void handle(long now) {
+                    int dx = 0, dy = 0;
+
+                    if      (goNorth) {dy += wo.characterMovementSpeedV; facing = 0; moving = true;}
+                    else if (goSouth) {dy -= wo.characterMovementSpeedV; facing = 1; moving = true;}
+                    else if (goEast)  {dx -= wo.characterMovementSpeedH; facing = 2; moving = true;}
+                    else if (goWest)  {dx += wo.characterMovementSpeedH; facing = 3; moving = true;}
+                    else    { moving = false;}
+
+                    if (moving) animationTimer ++;
+
+                    moveCharacter(moving, goNorth, goSouth, goEast, goWest, dx, dy, animationTimer, facing);
+
+                }
+            };
+
+            timer.start();
     }
     
     private void moveCharacter (boolean moving, boolean goNorth, boolean goSouth, boolean goEast, boolean goWest, int dx, int dy, int at, int facing){

@@ -56,10 +56,9 @@ public class Game {
         
         currentRoom = office;
     }
-    public void createStreets();
-    
-    streets = new Room();
-        streetsHitbox1 = new HitBox();
-        HitBox testBox = new HitBox(546*4, 527*4, 32*4, 22*4);
+    public void createStreets(){
+        streets = new Room();
+            HitBox testBox = new HitBox(546*4, 527*4, 32*4, 22*4);
+    }
     
 }

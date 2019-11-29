@@ -6,6 +6,10 @@ public class Game {
         
     public static String name;
     
+        Room streets = new Room();
+        HitBox testBox = new HitBox(546*4, 527*4, 32*4, 22*4);
+        HitBox[] hitboxArray = {testBox};
+    
     public Game() 
     {
         Parameter.createParameters();
@@ -56,9 +60,38 @@ public class Game {
         
         currentRoom = office;
     }
-    public void createStreets(){
-        streets = new Room();
-            HitBox testBox = new HitBox(546*4, 527*4, 32*4, 22*4);
+    
+    
+    public int collisionDetectionH(int dx){
+        for (int i = 0; i < hitboxArray.length; i++) {
+            if (hitboxArray[i].collisionLeft){
+            dx = 1;
+            } else {
+                dx = dx;
+            }
+            if (hitboxArray[i].collisionRight){
+                dx = -1;
+            } else {
+                dx = dx;
+            }
+        }
+        return dx;
     }
     
+    public int collisionDetectionV(int dy){
+        for (int i = 0; i < hitboxArray.length; i++) {
+            if (hitboxArray[i].collisionTop){
+            dy = 1;
+            } else {
+                dy = dy;
+            }
+            if (hitboxArray[i].collisionBottom){
+                dy = -1;
+            } else {
+                dy = dy;
+            }
+        }
+        return dy;
+    }
+        
 }

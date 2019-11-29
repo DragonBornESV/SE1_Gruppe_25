@@ -7,8 +7,8 @@ public class World {
      */
     int gameScreenWidth = 600;
     int gameScreenHeight = 600;
-    int gameX = -500;
-    int gameY = -500;
+    int gameX = -483*4;
+    int gameY = -537*4;
     
     int characterWidth = 32*4;
     int characterHeight = 32*4;

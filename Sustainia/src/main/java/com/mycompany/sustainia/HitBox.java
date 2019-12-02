@@ -24,37 +24,6 @@ public class HitBox {
     }
     
     
-    
-    public int collisionDetectionX(int dx){
-        if (collisionLeft){
-            dx = 1;
-        } else {
-            dx = dx;
-        }
-        if (collisionRight){
-            dx = -1;
-        } else {
-            dx = dx;
-        }
-        return dx;
-    }
-    
-    
-    public int collisionDetectionY(int dy){
-        if (collisionTop){
-            dy = 1;
-        } else {
-            dy = dy;
-        }
-        if (collisionBottom){
-            dy = -1;
-        } else {
-            dy = dy;
-        }
-        return dy;
-    }
-    
-    
     public void collisionWithObject(int x, int y){
         if ((characterHitbox[0] > topLeftX + x && characterHitbox[0] < topLeftX + width + x) || (characterHitbox[2] > topLeftX + x && characterHitbox[2] < topLeftX + width + x)){
             if (characterHitbox[3] > topLeftY + y && characterHitbox[3] < topLeftY + y + 24){

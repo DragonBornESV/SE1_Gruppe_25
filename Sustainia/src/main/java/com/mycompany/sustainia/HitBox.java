@@ -56,8 +56,5 @@ public class HitBox {
             collisionRight = false;
         }
         
-        System.out.println(topLeftX+x);
-        System.out.println(characterHitbox[2]);
-        System.out.println(collisionTop);
     }
 }

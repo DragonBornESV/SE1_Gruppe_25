@@ -42,7 +42,7 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
     World wo = new World();
-    HitBox testBox = new HitBox(546*4, 527*4, 32*4, 22*4);
+    Game game = new Game();
   //  Collision col = new Collision(wo);
     
     int cW = 320;
@@ -54,7 +54,7 @@ public class App extends Application {
     boolean moving  = false;
     int facing = 0;
     int animationTimer = 0;
-    private ImageView street;
+    private ImageView rooms;
     private ImageView streetTop;
     private ImageView character;
     
@@ -62,23 +62,26 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws FileNotFoundException {
         // Creates a new image, from the selected parth on computer
-        FileInputStream inputStreets = new FileInputStream("img\\street.png");
-        Image streetsImage = new Image(inputStreets,1120*4,770*4,true,false);
         FileInputStream inputCharacter = new FileInputStream("img\\ch.png");
         Image characterImage = new Image(inputCharacter,1280,1280,true,false);
+        
+    // Streets
+        FileInputStream inputRooms = new FileInputStream("img\\rooms.png");
+        Image roomsImage = new Image(inputRooms,1120*4,1188*4,true,false);
         FileInputStream inputStreetsTop = new FileInputStream("img\\street_top.png");
         Image streetsTopImage = new Image(inputStreetsTop,1120*4,770*4,true,false);
         
         
         //Setting the image view
-        this.street = new ImageView(streetsImage);
+        this.rooms = new ImageView(roomsImage);
+        rooms.setViewport(new Rectangle2D(0, 0, 1120*4, 770*4));
         this.character = new ImageView(characterImage);
         character.setViewport(new Rectangle2D(0, 0, cW, cH));
         this.streetTop = new ImageView(streetsTopImage);
         
         //Setting the position of the image 
-        this.street.setX(wo.gameX);
-        this.street.setY(wo.gameY);
+        this.rooms.setX(wo.gameX);
+        this.rooms.setY(wo.gameY);
         
         this.character.setX(wo.characterX);
         this.character.setY(wo.characterY);
@@ -87,8 +90,8 @@ public class App extends Application {
         this.streetTop.setY(wo.gameY);
         
         //setting the fit height and width of the image view 
-        this.street.setFitWidth(1120*4);
-        this.street.setFitHeight(770*4);
+        this.rooms.setFitWidth(1120*4);
+        this.rooms.setFitHeight(1188*4);
         
         this.character.setFitWidth(cW*0.1*4);
         this.character.setFitHeight(cH*0.1*4);
@@ -97,12 +100,12 @@ public class App extends Application {
         this.streetTop.setFitHeight(770*4);
         
         //Setting the preserve ratio of the image view 
-        this.street.setPreserveRatio(true);
+        this.rooms.setPreserveRatio(true);
         this.character.setPreserveRatio(true);
         this.streetTop.setPreserveRatio(true);
         
         //Creating a Group object  
-        Group root = new Group(this.street, this.character, this.streetTop);
+        Group root = new Group(this.rooms, this.character, this.streetTop);
         
         //Creating a scene object 
         Scene scene = new Scene(root, wo.gameScreenWidth, wo.gameScreenHeight);
@@ -128,7 +131,7 @@ public class App extends Application {
                     case W: goNorth = false; break;
                     case S: goSouth = false; break;
                     case D: goEast  = false; break;
-                    case A:  goWest  = false; break;
+                    case A: goWest  = false; break;
                 }
             }
         });
@@ -142,6 +145,7 @@ public class App extends Application {
         stage.show();
         
         characterAnimation();
+        drawRoom(game.currentRoom);
     }
     
     private void characterAnimation() {
@@ -168,18 +172,19 @@ public class App extends Application {
     
     private void moveCharacter (boolean moving, boolean goNorth, boolean goSouth, boolean goEast, boolean goWest, int dx, int dy, int at, int facing){
         
-        dx = testBox.collisionDetectionX(dx);
-        dy = testBox.collisionDetectionY(dy);
+        dx = game.collisionDetectionX(dx);
+        dy = game.collisionDetectionY(dy);
         
         wo.gameX += dx;
         wo.gameY += dy;
         
-        this.street.setX(wo.gameX);
-        this.street.setY(wo.gameY);
+        this.rooms.setX(wo.gameX);
+        this.rooms.setY(wo.gameY);
         this.streetTop.setX(wo.gameX);
         this.streetTop.setY(wo.gameY);
         
-        testBox.collisionWithObject(wo.gameX, wo.gameY);
+        // The games cordinants are needet to position the collision
+        game.collisionWithObjects(wo.gameX, wo.gameY);
         
         // character_animation
         if (moving) {
@@ -210,6 +215,23 @@ public class App extends Application {
             }
         }
         
+    }
+    private void drawRoom(Room currentRoom){
+        if (currentRoom.equals(game.streets)){
+            wo.gameX = -400*4;
+            wo.gameY = -500*4;
+            this.rooms.setFitWidth(1120*4);
+            this.rooms.setFitHeight(770*4);
+            rooms.setViewport(new Rectangle2D(0, 0, 1120*4, 770*4));
+        } else if (currentRoom.equals(game.townHall)){
+            wo.gameX = -128*4+300-64;
+            wo.gameY = -200*4+300-64;
+            this.rooms.setFitWidth(256*4);
+            this.rooms.setFitHeight(209*4);
+            rooms.setViewport(new Rectangle2D(0, 770*4, 256*4, 209*4));
+        } else if (currentRoom.equals(game.nonsustainableHouse)){
+            rooms.setViewport(new Rectangle2D(256*4, 770*4, 256*4, 209*4));
+        }
     }
     
     

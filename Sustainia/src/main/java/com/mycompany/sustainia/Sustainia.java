@@ -9,6 +9,8 @@ public class Sustainia {
        //boolean done = false;
        //while (!done){
        App.runApp(args);
+       Game game = new Game();
+       game.play();
        //}
     }
 

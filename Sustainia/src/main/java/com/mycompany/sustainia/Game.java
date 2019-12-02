@@ -1,14 +1,26 @@
 package com.mycompany.sustainia;
 
 public class Game {
-    private Room currentRoom;
+    int currentRoomNr = 1;
+    
+    Room streets = new Room("Streets");
+    Room townHall = new Room("Town Hall");
+    Room nonsustainableHouse = new Room("NSH");
+    Room policeStation = new Room("Police Station");
+    Room bank = new Room("Bank");
+    Room clothingFactory = new Room("Colothing Factory");
+    Room school = new Room("School");
+    Room park = new Room("Park");
+    Room recyclingStation = new Room("Recycling Station");
+        
+    Room currentRoom = streets;
+    
+    HitBox testBox = new HitBox(546*4, 527*4, 32*4, 22*4);
+    HitBox[] hitboxArray = {testBox};
+    
  // private Inventory inv;
         
     public static String name;
-    
-        Room streets = new Room();
-        HitBox testBox = new HitBox(546*4, 527*4, 32*4, 22*4);
-        HitBox[] hitboxArray = {testBox};
     
     public Game() 
     {
@@ -17,11 +29,7 @@ public class Game {
     }
 
 
-    private void createRooms()
-    {
-        Room office, streets, nonsustainableHouse, policeStation, bank, clothingFactory, waterPlant, 
-                school, supermarket, clothingStore, oldDecayingBuilding, park, 
-                hospital, recyclingStation;
+    private void createRooms(){
         
         /** Rooms are created and named.
          *  Rooms are assigned an intro which describes where the player are at.
@@ -43,26 +51,10 @@ public class Game {
         int[] hospitalItems = new int[]{0,0,0,50,30,20,0,10,60,0};
     
     */
-        
-        office = new Room();
-        nonsustainableHouse = new Room();
-        policeStation = new Room();
-        bank = new Room();
-        clothingFactory = new Room();
-        waterPlant = new Room();
-        school = new Room();
-        supermarket = new Room();
-        clothingStore = new Room();
-        oldDecayingBuilding = new Room();
-        park = new Room();
-        hospital = new Room();
-        recyclingStation = new Room();
-        
-        currentRoom = office;
     }
     
     
-    public int collisionDetectionH(int dx){
+    public int collisionDetectionX(int dx){
         for (int i = 0; i < hitboxArray.length; i++) {
             if (hitboxArray[i].collisionLeft){
             dx = 1;
@@ -78,7 +70,7 @@ public class Game {
         return dx;
     }
     
-    public int collisionDetectionV(int dy){
+    public int collisionDetectionY(int dy){
         for (int i = 0; i < hitboxArray.length; i++) {
             if (hitboxArray[i].collisionTop){
             dy = 1;
@@ -92,6 +84,19 @@ public class Game {
             }
         }
         return dy;
+    }
+    
+    public void collisionWithObjects(int x, int y){
+        if (currentRoom.equals(streets)){
+            testBox.collisionWithObject(x, y);
+        } else {
+            return;
+        }
+    }
+    
+    
+    public void play(){
+        createRooms();
     }
         
 }

@@ -17,8 +17,8 @@ public class Game
         Parameter.createParameters();
         inv = new Inventory();
     }
-
-
+    
+        
     private void createRooms()
     {
         //Setting up the NPC for the outside room

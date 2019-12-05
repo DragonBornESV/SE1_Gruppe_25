@@ -105,7 +105,14 @@ public class Parameter {
         if (name != null) {
             Parameter p = parameterList.get(name);
             p.addScore(add);
+            if (p.getScore() > 100){
+                p.setScore(100);
+            }
+            if (p.getScore() < 0) {
+                p.setScore(0);
+            }
             parameterList.put(name, p);
+
             if (p.getScore() > 100){
                 p.setScore(100);
             }

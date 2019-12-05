@@ -2,7 +2,8 @@ package worldofzuul;
 
 public class Inventory {
     // We create variables for our starting inventory stats.
-    double money = 0;           // The amount of money the player is carrying.
+    private float totalMaterialValue = 0;           // The amount of totalMaterialValue the player is carrying.
+    
     double carrying = 0;        // The current weight the player is carrying.
     int carryingCapacity = 100; // The total amount of weight the player is able to carry.
 
@@ -77,12 +78,12 @@ public class Inventory {
     
    
 /* 
- * The method updateInventory() is used to update the money value and the carry value.
+ * The method updateInventory() is used to update the totalMaterialValue value and the carry value.
  * The method is called whenever an item is removed or placed in the inventory
  */  
   public void updateInventory() {
-        double temp = 0;         // The first temporary variable is used to calculate the amount of weight the player is carrying.
-        double temp2 = 0;        // The second temporary variable is used to calculate the total material value the player is carrying.
+        float temp = 0;         // The first temporary variable is used to calculate the amount of weight the player is carrying.
+        float temp2 = 0;        // The second temporary variable is used to calculate the total material value the player is carrying.
       
   // This for loop loops through the item array and takes the weight value and multiplies it with the item count value.      
       for (int i = 0; i < itemsArray.length; i++){                
@@ -93,7 +94,7 @@ public class Inventory {
             temp2 += materialArray[j].value*materialArray[j].count;
         }
         carrying = temp;
-        money = temp2;
+        totalMaterialValue = temp2;
         
     }
 
@@ -213,7 +214,7 @@ public class Inventory {
         System.out.println("│    MONEY    │  CARRYING  │  CAPACITY  │");
         System.out.println("├-------------┼------------┼------------┤");
         System.out.print("│  ");
-        System.out.printf("%9.2f", money);
+        System.out.printf("%9.2f", totalMaterialValue);
         System.out.print("  │  ");
         System.out.printf("%8.2f", carrying);
         System.out.print("  │  ");
@@ -282,5 +283,9 @@ public class Inventory {
         System.out.println("We can't indentify the item name...");
         System.out.println(" "); 
     } 
+    
+    public float getTotalMaterialValue() {
+        return totalMaterialValue;
+    }
     
 }

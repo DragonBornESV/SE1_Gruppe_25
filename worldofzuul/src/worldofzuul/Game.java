@@ -8,6 +8,8 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private Inventory inv;
+    
+    private Room recyclingStation;
         
     public static String name;
     
@@ -262,7 +264,7 @@ public class Game
         Room office, street1, street2, street3, street4, corner1, corner2, 
                 corner3, corner4, nonsustainableHouse, policeStation, bank, clothingFactory, waterPlant, 
                 school, supermarket, clothingStore, oldDecayingBuilding, park, 
-                hospital, recyclingStation;
+                hospital;
         
         /** Rooms are created and named.
          *  Rooms are assigned an intro which describes where the player are at.
@@ -382,7 +384,7 @@ public class Game
             Command command = parser.getCommand();
             finished = processCommand(command);
             
-            if (mainScore.mainScore.getMainAverage() <= 0) {
+            if (mainScore.mainScore.getMainAverage() == 0) {
 
                 Parameter.printScore();
                 System.out.println("You lost the game noob.");
@@ -513,8 +515,15 @@ public class Game
             inv.dropItem(command.getSecondWord(), currentRoom);
         }
         else if (commandWord == CommandWord.SALVAGE) {
-            if (true) {     //INDSÆT HVOR DEN TJEKKER OM CURRENT ROOM = RECYCLING STATION
+            if (currentRoom.equals(recyclingStation)) { 
                 inv.salvageMaterials(command.getSecondWord());
+            }else{
+                System.out.println("To salvage, go to the recyclingstation");
+            }
+        }
+        else if (commandWord == CommandWord.RECYCLE) {
+            if (currentRoom.equals(recyclingStation)) { 
+                Parameter.mapAddScore("City Cleanliness", inv.getTotalMaterialValue()/10);
             }else{
                 System.out.println("To salvage, go to the recyclingstation");
             }

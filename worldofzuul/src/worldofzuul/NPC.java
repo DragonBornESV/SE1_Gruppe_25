@@ -68,7 +68,9 @@ public class NPC {
         }
         
         //Checks if the player succeeded. If not a fail message is printed.
-        if (persuasionValue < persuasionTrigger) {
+        if (persuasionValue < persuasionTrigger && !pointsGiven) {
+            Parameter.mapAddScore(parameterName, -(points/2));
+            System.out.println("You lost " + (points/2) + "% in '" + parameterName + "'!");
             System.out.println("");
             System.out.println("You failed to convince " + npcName + "...");
             System.out.println("Talk to the person again. "

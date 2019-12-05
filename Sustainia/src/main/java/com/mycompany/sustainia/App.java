@@ -23,16 +23,21 @@ import javafx.scene.image.ImageView;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 import javafx.stage.Stage;
 
 // import java.awt.event.KeyEvent;
@@ -58,14 +63,18 @@ public class App extends Application {
     private ImageView streetTop;
     private ImageView character;
     
+    private static Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        return fxmlLoader.load();
+    }
     
     @Override
-    public void start(Stage stage) throws FileNotFoundException {
+    public void start(Stage stage) throws FileNotFoundException, IOException {
         // Creates a new image, from the selected parth on computer
         FileInputStream inputCharacter = new FileInputStream("img\\ch.png");
         Image characterImage = new Image(inputCharacter,1280,1280,true,false);
         
-    // Streets
+        // Streets
         FileInputStream inputRooms = new FileInputStream("img\\rooms.png");
         Image roomsImage = new Image(inputRooms,1120*4,1188*4,true,false);
         FileInputStream inputStreetsTop = new FileInputStream("img\\street_top.png");
@@ -104,13 +113,16 @@ public class App extends Application {
         this.character.setPreserveRatio(true);
         this.streetTop.setPreserveRatio(true);
         
+        
         //Creating a Group object  
         Group root = new Group(this.rooms, this.character, this.streetTop);
         
-        //Creating a scene object 
-        Scene scene = new Scene(root, wo.gameScreenWidth, wo.gameScreenHeight);
         
-// KEYS pressed
+        PrimaryController pc = new PrimaryController();
+        //Creating a scene object 
+        Scene scene = new Scene(loadFXML("primary"), 900, 600);
+        
+        // KEYS pressed
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent e) {
@@ -138,6 +150,7 @@ public class App extends Application {
         
         //Setting title to the Stage 
         stage.setTitle("Moving Image Test");
+        stage.setResizable(false);
         
         //Adding scene to the stage        
         stage.setScene(scene);
@@ -234,8 +247,6 @@ public class App extends Application {
         }
     }
     
-    
-
     public static void runApp(String[] args) {
         launch();
     }

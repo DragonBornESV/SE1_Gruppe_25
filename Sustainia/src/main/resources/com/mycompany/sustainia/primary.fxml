@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<SplitPane fx:id="wholeScene" dividerPositions="0.298" maxHeight="600.0" maxWidth="900.0" minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.sustainia.PrimaryController">
+  <items>
+    <AnchorPane fx:id="gamePane" maxHeight="600" maxWidth="600" minHeight="600" minWidth="600" prefHeight="600.0" prefWidth="600.0" />
+    <AnchorPane fx:id="menuPane" maxHeight="600" maxWidth="300.0" minHeight="600" minWidth="300.0" prefHeight="600.0" prefWidth="300.0">
+         <children>
+            <Button fx:id="btn" layoutX="124.0" layoutY="288.0" mnemonicParsing="false" onAction="#print" text="Button" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>

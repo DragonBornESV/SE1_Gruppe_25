@@ -1,7 +1,8 @@
 module com.mycompany.sustainia {
     requires javafx.controls;
-    requires java.desktop;
-    requires javafx.base;
-    requires javafx.graphics;
+    requires javafx.fxml;
+    requires java.base;
+
+    opens com.mycompany.sustainia to javafx.fxml;
     exports com.mycompany.sustainia;
 }
